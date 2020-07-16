@@ -1,10 +1,18 @@
 import React from 'react'
 import { css } from '@emotion/core'
 
+import Navbar from '../navbar/navbar'
+
+const homePageWrapperCss = css`
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+`
+
 export default function Home() {
   return (
-    <div>
-      <div>Hello From Home Header</div>
+    <div css={homePageWrapperCss}>
+      <Navbar />
       <div>
         Hello From Home Body
         <br />
