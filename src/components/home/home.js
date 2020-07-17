@@ -14,8 +14,6 @@ export default function Home() {
     <div css={homePageWrapperCss}>
       <Navbar />
       <div>
-        Hello From Home Body
-        <br />
         <select name="whole-measurement-num">
           <option value="blank"> </option>
           <option value="one">1</option>
@@ -47,13 +45,12 @@ export default function Home() {
           <option value="pints">pints</option>
           <option value="quarts">quarts</option>
           <option value="ounces">Ounces</option>
+          <option value="grams">Grams</option>
         </select>
         of
-        <form>
-          <input type="text" />
-          <input type="text" />
-          <input type="text" />
-        </form>
+        <input type="text" />
+        <button type="button">Add</button>
+        <br />
         <button type="button">Add Ingredient</button>
         <button type="button">Add Instruction</button>
       </div>
