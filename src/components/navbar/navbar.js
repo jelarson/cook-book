@@ -68,9 +68,9 @@ export default function Navbar() {
             Add a Recipe
           </a>
         </div> */}
-        <NavbarButton path="google.com" buttonText="My Cookbook" />
-        <NavbarButton path="google.com" buttonText="All Recipes" />
-        <NavbarButton path="google.com" buttonText="Add a Recipe" />
+        <NavbarButton path="/mycookbook" buttonText="My Cookbook" />
+        <NavbarButton path="/allrecipes" buttonText="All Recipes" />
+        <NavbarButton path="/" buttonText="Add a Recipe" />
       </div>
     </div>
   )
