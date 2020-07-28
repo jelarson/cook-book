@@ -2,6 +2,7 @@ import React from 'react'
 import { css } from '@emotion/core'
 
 import Navbar from '../navbar/navbar'
+import FilterBar from '../filterBar/filterBar'
 
 const myCookbookPageWrapperCss = css`
   display: flex;
@@ -18,6 +19,7 @@ export default function MyCookbook() {
   return (
     <div css={myCookbookPageWrapperCss}>
       <Navbar />
+      <FilterBar />
       <div css={myCookbookContentWrapperCss}>Hello from body content - my cookbook</div>
     </div>
   )
