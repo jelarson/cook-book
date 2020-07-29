@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react'
 import { css } from '@emotion/core'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import axios from 'axios'
+import { faThumbsDown } from '@fortawesome/free-solid-svg-icons'
 
 const cardWrapperCss = css`
   display: flex;
@@ -97,7 +98,33 @@ export default function RecipeCard(props) {
   }, [favorite])
 
   function favClickHandler() {
-    // axios.
+    if (iconStyleCss == iconButtonFavCss) {
+      axios
+        .patch(`https://jel-family-cookbook-db.herokuapp.com/recipe/${id}`, {
+          name,
+          category,
+          recipeImage: image,
+          ingredients,
+          instructions,
+          thumbsUp,
+          thumbsDown,
+          favorite: 'false',
+        })
+        .then(() => setIconStyleCss(iconButtonNoFavCss))
+    } else {
+      axios
+        .patch(`https://jel-family-cookbook-db.herokuapp.com/recipe/${id}`, {
+          name,
+          category,
+          recipeImage: image,
+          ingredients,
+          instructions,
+          thumbsUp,
+          thumbsDown,
+          favorite: 'true',
+        })
+        .then(() => setIconStyleCss(iconButtonFavCss))
+    }
   }
 
   return (
@@ -111,7 +138,7 @@ export default function RecipeCard(props) {
       <div css={cardButtonWrapper}>
         {/* <button type="button"> */}
         <div css={iconWrapperCss}>
-          <FontAwesomeIcon css={iconStyleCss} onClick={favClickHandler()} icon="heart" />
+          <FontAwesomeIcon css={iconStyleCss} onClick={favClickHandler} icon="heart" />
         </div>
         {/* </button> */}
         <button type="button">View Recipe</button>
