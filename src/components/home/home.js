@@ -3,6 +3,7 @@ import { css } from '@emotion/core'
 
 import Navbar from '../navbar/navbar'
 import RecipeCreate from './recipeCreate'
+import Footer from '../footer/footer'
 
 const homePageWrapperCss = css`
   display: flex;
@@ -63,6 +64,7 @@ export default function Home() {
       <div css={homeContentWrapperCss}>
         <RecipeCreate />
       </div>
+      <Footer />
     </div>
   )
 }

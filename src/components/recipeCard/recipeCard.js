@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react'
 import { css } from '@emotion/core'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import axios from 'axios'
-import { faThumbsDown } from '@fortawesome/free-solid-svg-icons'
 
 const cardWrapperCss = css`
   display: flex;
@@ -13,10 +12,23 @@ const cardWrapperCss = css`
   width: 20vw;
   height: 300px;
   margin-top: 30px;
-  position: relative;
+  border-radius: 15px;
+  // position: relative;
 `
+const cardWrapperHiddenCss = css`
+  display: none;
+`
+
+const cardHeadWrapperCss = css`
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  align-items: center;
+`
+
 const cardTitleCss = css`
   text-align: center;
+  font-weight: 900;
 `
 const cardCategoryCss = css`
   display: flex;
@@ -52,19 +64,37 @@ const cardButtonWrapper = css`
   button {
     width: 15vw;
     margin-bottom: 7px;
-    color: red;
+    background-color: black;
+    color: white;
+    outline: none;
+    border: none;
+    border-radius: 8px;
+    font-size: 1.2em;
+    cursor: pointer;
+
+    &:hover {
+      color: yellow;
+    }
   }
 `
 const iconWrapperCss = css`
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: space-between;
   height: 25px;
-  width: 25px;
-  position: absolute;
-  top: 33px;
-  right: 5px;
+  width: 96%;
+  margin-top: 3px;
+  // position: absolute;
+  // top: 33px;
+  // right: 5px;
   // border: 1px black solid;
+`
+const deleteIconCss = css`
+  cursor: pointer;
+
+  &:hover {
+    font-size: 1.4em;
+  }
 `
 
 const iconButtonFavCss = css`
@@ -87,6 +117,7 @@ const iconButtonNoFavCss = css`
 export default function RecipeCard(props) {
   const { name, category, image, id, ingredients, instructions, thumbsUp, thumbsDown, favorite } = props
   const [iconStyleCss, setIconStyleCss] = useState(iconButtonNoFavCss)
+  const [cardDisplay, setCardDisplay] = useState(cardWrapperCss)
 
   useEffect(() => {
     if (favorite === 'true') {
@@ -97,49 +128,57 @@ export default function RecipeCard(props) {
     }
   }, [favorite])
 
+  function deleteClickHandler() {
+    setCardDisplay(cardWrapperHiddenCss)
+    axios.delete(`https://jel-family-cookbook-db.herokuapp.com/recipe/${id}`)
+  }
+
   function favClickHandler() {
-    if (iconStyleCss == iconButtonFavCss) {
-      axios
-        .patch(`https://jel-family-cookbook-db.herokuapp.com/recipe/${id}`, {
-          name,
-          category,
-          recipeImage: image,
-          ingredients,
-          instructions,
-          thumbsUp,
-          thumbsDown,
-          favorite: 'false',
-        })
-        .then(() => setIconStyleCss(iconButtonNoFavCss))
+    if (iconStyleCss === iconButtonFavCss) {
+      setIconStyleCss(iconButtonNoFavCss)
+      axios.patch(`https://jel-family-cookbook-db.herokuapp.com/recipe/${id}`, {
+        name,
+        category,
+        recipeImage: image,
+        ingredients,
+        instructions,
+        thumbsUp,
+        thumbsDown,
+        favorite: 'false',
+      })
+      // .then(() => setIconStyleCss(iconButtonNoFavCss))
     } else {
-      axios
-        .patch(`https://jel-family-cookbook-db.herokuapp.com/recipe/${id}`, {
-          name,
-          category,
-          recipeImage: image,
-          ingredients,
-          instructions,
-          thumbsUp,
-          thumbsDown,
-          favorite: 'true',
-        })
-        .then(() => setIconStyleCss(iconButtonFavCss))
+      setIconStyleCss(iconButtonFavCss)
+      axios.patch(`https://jel-family-cookbook-db.herokuapp.com/recipe/${id}`, {
+        name,
+        category,
+        recipeImage: image,
+        ingredients,
+        instructions,
+        thumbsUp,
+        thumbsDown,
+        favorite: 'true',
+      })
+      // .then(() => setIconStyleCss(iconButtonFavCss))
     }
   }
 
   return (
-    <div css={cardWrapperCss}>
-      <div css={cardCategoryCss}>{category}</div>
-      <div css={cardTitleCss}>{name}</div>
+    <div css={cardDisplay}>
+      <div css={cardHeadWrapperCss}>
+        <div css={cardCategoryCss}>{category}</div>
+        <div css={iconWrapperCss}>
+          <FontAwesomeIcon css={deleteIconCss} onClick={deleteClickHandler} icon="trash" />
+          <FontAwesomeIcon css={iconStyleCss} onClick={favClickHandler} icon="heart" />
+        </div>
+        <div css={cardTitleCss}>{name}</div>
+      </div>
       <div css={imageWrapperCss}>
         {/* <div css={imageWrapperCss} style={{ backgroundImage: `url(${image})` }}> */}
         <img src={image} alt="Recipe Hero" />
       </div>
       <div css={cardButtonWrapper}>
         {/* <button type="button"> */}
-        <div css={iconWrapperCss}>
-          <FontAwesomeIcon css={iconStyleCss} onClick={favClickHandler} icon="heart" />
-        </div>
         {/* </button> */}
         <button type="button">View Recipe</button>
       </div>

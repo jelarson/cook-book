@@ -3,6 +3,7 @@ import { css } from '@emotion/core'
 
 import Navbar from '../navbar/navbar'
 import FilterBar from '../filterBar/filterBar'
+import Footer from '../footer/footer'
 
 const myCookbookPageWrapperCss = css`
   display: flex;
@@ -21,6 +22,7 @@ export default function MyCookbook() {
       <Navbar />
       <FilterBar />
       <div css={myCookbookContentWrapperCss}>Hello from body content - my cookbook</div>
+      <Footer />
     </div>
   )
 }

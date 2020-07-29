@@ -5,6 +5,7 @@ import { css } from '@emotion/core'
 import Navbar from '../navbar/navbar'
 import FilterBar from '../filterBar/filterBar'
 import RecipeCard from '../recipeCard/recipeCard'
+import Footer from '../footer/footer'
 
 const allRecipePageWrapperCss = css`
   display: flex;
@@ -51,6 +52,7 @@ export default function AllRecipes() {
       <Navbar />
       <FilterBar />
       <div css={allRecipeContentWrapperCss}>{generateCards()}</div>
+      <Footer />
     </div>
   )
 }
