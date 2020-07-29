@@ -5,8 +5,10 @@ import { Global, css } from '@emotion/core'
 import Home from './home/home'
 import AllRecipes from './allRecipes/allRecipes'
 import MyCookbook from './myCookbook/myCookbook'
+import Icons from './icons/icons'
 
 export default function App() {
+  Icons()
   return (
     <div className="app">
       <Router>

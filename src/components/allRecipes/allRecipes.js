@@ -30,7 +30,19 @@ export default function AllRecipes() {
 
   function generateCards() {
     return recipeArr.map((recipe) => {
-      return <RecipeCard recipeObj={recipe} />
+      return (
+        <RecipeCard
+          name={recipe.name}
+          category={recipe.category}
+          image={recipe.recipeImage}
+          id={recipe.id}
+          ingredients={recipe.ingredients}
+          instructions={recipe.instructions}
+          thumbsUp={recipe.thumbsUp}
+          thumbsDown={recipe.thumbsDown}
+          favorite={recipe.favorite}
+        />
+      )
     })
   }
 
