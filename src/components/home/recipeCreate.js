@@ -17,27 +17,64 @@ const recipeCreateTitleCss = css`
 `
 const recipeCreateContentWrapperCss = css`
   display: flex;
-  flex-direction: column;
+  // flex-direction: column;
   border-top: 3px black solid;
   width: 100%;
+  justify-content: space-between;
+  padding-top: 5px;
 `
-const buttonWrapperCss = css`
+const recipeAddWrapperCss = css`
   display: flex;
+  flex-direction: column;
   justify-content: center;
+  width: 50%;
 
   button {
     margin: 8px 8px 0 8px;
+    height: 30px;
   }
+`
+const recipePreviewWrapperCss = css`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 50%;
+`
+const recipePreviewContentWrapperCss = css`
+  width: 100%;
+  height: 400px;
+  border: 2px solid black;
 `
 
 export default function RecipeCreate() {
   return (
     <div css={recipeCreateWrapperCss}>
-      <div css={recipeCreateTitleCss}>Create your own recipe</div>
+      <div css={recipeCreateTitleCss}>Add Your Own Recipe</div>
       <div css={recipeCreateContentWrapperCss}>
-        <div css={buttonWrapperCss}>
-          <button type="button">Add an Ingredient</button>
-          <button type="button">Add an Instruction</button>
+        <div css={recipeAddWrapperCss}>
+          <div>Recipe Title:</div>
+          <div>
+            <input type="text" />
+          </div>
+          <div>Category:</div>
+          <div>
+            <select name="recipe-category">
+              {/* <option value="blank"> </option> */}
+              <option value="Breakfast">Breakfast</option>
+              <option value="Lunch">Lunch</option>
+              <option value="Dinner">Dinner</option>
+              <option value="Dessert">Dessert</option>
+              <option value="Appetizer/Snack">Appetizer/Snack</option>
+            </select>
+          </div>
+          <div>
+            <button type="button">Add an Ingredient</button>
+            <button type="button">Add an Instruction</button>
+          </div>
+        </div>
+        <div css={recipePreviewWrapperCss}>
+          <div>Your Recipe Preview</div>
+          <div css={recipePreviewContentWrapperCss}>recipe content placeholder</div>
         </div>
       </div>
     </div>

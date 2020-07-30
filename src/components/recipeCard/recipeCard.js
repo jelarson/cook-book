@@ -10,7 +10,7 @@ const cardWrapperCss = css`
   justify-content: space-between;
   border: 4px solid black;
   width: 20vw;
-  height: 300px;
+  height: 400px;
   margin-top: 30px;
   border-radius: 15px;
   // position: relative;
@@ -52,6 +52,10 @@ const imageWrapperCss = css`
     max-width: 100%;
     max-height: 100%;
   }
+`
+
+const starRatingScoreCss = css`
+  text-align: center;
 `
 
 const cardButtonWrapper = css`
@@ -114,6 +118,11 @@ const iconButtonNoFavCss = css`
   }
 `
 
+const starIconCss = css`
+  color: gold;
+  margin-left: 3px;
+`
+
 export default function RecipeCard(props) {
   const { name, category, image, id, ingredients, instructions, thumbsUp, thumbsDown, favorite } = props
   const [iconStyleCss, setIconStyleCss] = useState(iconButtonNoFavCss)
@@ -169,6 +178,10 @@ export default function RecipeCard(props) {
         <div css={cardCategoryCss}>{category}</div>
         <div css={iconWrapperCss}>
           <FontAwesomeIcon css={deleteIconCss} onClick={deleteClickHandler} icon="trash" />
+          <div css={starRatingScoreCss}>
+            {Number(thumbsUp) / Number(thumbsDown)}
+            <FontAwesomeIcon css={starIconCss} icon="star" />
+          </div>
           <FontAwesomeIcon css={iconStyleCss} onClick={favClickHandler} icon="heart" />
         </div>
         <div css={cardTitleCss}>{name}</div>
