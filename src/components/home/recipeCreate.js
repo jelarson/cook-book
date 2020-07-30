@@ -2,6 +2,7 @@ import React from 'react'
 import { css } from '@emotion/core'
 
 import RecipePreview from './recipePreview'
+import CreateForm from './createForm'
 
 const recipeCreateWrapperCss = css`
   display: flex;
@@ -25,28 +26,16 @@ const recipeCreateContentWrapperCss = css`
   justify-content: space-between;
   padding-top: 5px;
 `
-const recipeAddWrapperCss = css`
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  width: 50%;
-
-  button {
-    margin: 8px 8px 0 8px;
-    height: 30px;
-  }
-`
-// const recipePreviewWrapperCss = css`
+// const recipeAddWrapperCss = css`
 //   display: flex;
 //   flex-direction: column;
-//   align-items: center;
+//   justify-content: center;
 //   width: 50%;
-// `
-// const recipePreviewContentWrapperCss = css`
-//   width: 100%;
-//   height: 400px;
-//   border-left: 4px solid black;
-//   padding: 7px;
+
+//   button {
+//     margin: 8px 8px 0 8px;
+//     height: 30px;
+//   }
 // `
 
 export default function RecipeCreate() {
@@ -54,7 +43,8 @@ export default function RecipeCreate() {
     <div css={recipeCreateWrapperCss}>
       <div css={recipeCreateTitleCss}>Add Your Own Recipe</div>
       <div css={recipeCreateContentWrapperCss}>
-        <div css={recipeAddWrapperCss}>
+        <CreateForm />
+        {/* <div css={recipeAddWrapperCss}>
           <div>
             <div>Recipe Title:</div>
             <div>
@@ -65,7 +55,7 @@ export default function RecipeCreate() {
             <div>Category:</div>
             <div>
               <select name="recipe-category">
-                {/* <option value="blank"> </option> */}
+                <option value="blank"> </option>
                 <option value="Breakfast">Breakfast</option>
                 <option value="Lunch">Lunch</option>
                 <option value="Dinner">Dinner</option>
@@ -78,10 +68,6 @@ export default function RecipeCreate() {
             <button type="button">Add an Ingredient</button>
             <button type="button">Add an Instruction</button>
           </div>
-        </div>
-        {/* <div css={recipePreviewWrapperCss}>
-          <div>Your Recipe Preview</div>
-          <div css={recipePreviewContentWrapperCss}>recipe content placeholder</div>
         </div> */}
         <RecipePreview />
       </div>
