@@ -3,6 +3,9 @@ import { css } from '@emotion/core'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import axios from 'axios'
 
+import CardImage from './cardImage'
+import CardBottomButton from './cardBottomButton'
+
 const cardWrapperCss = css`
   display: flex;
   flex-direction: column;
@@ -39,48 +42,25 @@ const cardCategoryCss = css`
   border-bottom: 4px solid black;
   text-align: center;
 `
-const imageWrapperCss = css`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 15vw;
-  height: 15vw;
-  padding: top: 100%;
-  border: 2px solid black;
+// const imageWrapperCss = css`
+//   display: flex;
+//   justify-content: center;
+//   align-items: center;
+//   width: 15vw;
+//   height: 15vw;
+//   padding: top: 100%;
+//   border: 2px solid black;
 
-  img {
-    max-width: 100%;
-    max-height: 100%;
-  }
-`
+//   img {
+//     max-width: 100%;
+//     max-height: 100%;
+//   }
+// `
 
 const starRatingScoreCss = css`
   text-align: center;
 `
 
-const cardButtonWrapper = css`
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  width: 100%;
-
-  button {
-    width: 15vw;
-    margin-bottom: 7px;
-    background-color: black;
-    color: white;
-    outline: none;
-    border: none;
-    border-radius: 8px;
-    font-size: 1.2em;
-    cursor: pointer;
-
-    &:hover {
-      color: yellow;
-    }
-  }
-`
 const iconWrapperCss = css`
   display: flex;
   align-items: center;
@@ -155,7 +135,6 @@ export default function RecipeCard(props) {
         thumbsDown,
         favorite: 'false',
       })
-      // .then(() => setIconStyleCss(iconButtonNoFavCss))
     } else {
       setIconStyleCss(iconButtonFavCss)
       axios.patch(`https://jel-family-cookbook-db.herokuapp.com/recipe/${id}`, {
@@ -168,7 +147,6 @@ export default function RecipeCard(props) {
         thumbsDown,
         favorite: 'true',
       })
-      // .then(() => setIconStyleCss(iconButtonFavCss))
     }
   }
 
@@ -186,15 +164,11 @@ export default function RecipeCard(props) {
         </div>
         <div css={cardTitleCss}>{name}</div>
       </div>
-      <div css={imageWrapperCss}>
-        {/* <div css={imageWrapperCss} style={{ backgroundImage: `url(${image})` }}> */}
+      {/* <div css={imageWrapperCss}>
         <img src={image} alt="Recipe Hero" />
-      </div>
-      <div css={cardButtonWrapper}>
-        {/* <button type="button"> */}
-        {/* </button> */}
-        <button type="button">View Recipe</button>
-      </div>
+      </div> */}
+      <CardImage image={image} />
+      <CardBottomButton />
     </div>
   )
 }
