@@ -13,20 +13,22 @@ const recipeAddWrapperCss = css`
   }
 `
 
-export default function CreateForm() {
+export default function CreateForm(props) {
+  const { setRecipeTitle, setRecipeCategory, setRecipeIngredients, setRecipeInstructions } = props
+
   return (
     <div css={recipeAddWrapperCss}>
       <div>
         <div>Recipe Title:</div>
         <div>
-          <input type="text" />
+          <input type="text" onChange={({ target }) => setRecipeTitle(target.value)} />
         </div>
       </div>
       <div>
         <div>Category:</div>
         <div>
-          <select name="recipe-category">
-            {/* <option value="blank"> </option> */}
+          <select name="recipe-category" onChange={(e) => setRecipeCategory(e.currentTarget.value)}>
+            <option value="blank"> </option>
             <option value="Breakfast">Breakfast</option>
             <option value="Lunch">Lunch</option>
             <option value="Dinner">Dinner</option>
