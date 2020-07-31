@@ -3,6 +3,7 @@ import { css } from '@emotion/core'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import axios from 'axios'
 
+import CardRating from './cardRating'
 import CardImage from './cardImage'
 import CardBottomButton from './cardBottomButton'
 
@@ -16,7 +17,6 @@ const cardWrapperCss = css`
   height: 400px;
   margin-top: 30px;
   border-radius: 15px;
-  // position: relative;
 `
 const cardWrapperHiddenCss = css`
   display: none;
@@ -42,24 +42,6 @@ const cardCategoryCss = css`
   border-bottom: 4px solid black;
   text-align: center;
 `
-// const imageWrapperCss = css`
-//   display: flex;
-//   justify-content: center;
-//   align-items: center;
-//   width: 15vw;
-//   height: 15vw;
-//   padding: top: 100%;
-//   border: 2px solid black;
-
-//   img {
-//     max-width: 100%;
-//     max-height: 100%;
-//   }
-// `
-
-const starRatingScoreCss = css`
-  text-align: center;
-`
 
 const iconWrapperCss = css`
   display: flex;
@@ -68,10 +50,6 @@ const iconWrapperCss = css`
   height: 25px;
   width: 96%;
   margin-top: 3px;
-  // position: absolute;
-  // top: 33px;
-  // right: 5px;
-  // border: 1px black solid;
 `
 const deleteIconCss = css`
   cursor: pointer;
@@ -98,9 +76,12 @@ const iconButtonNoFavCss = css`
   }
 `
 
-const starIconCss = css`
-  color: gold;
-  margin-left: 3px;
+const iconButtonContainer = css`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 18px;
+  width: 18px;
 `
 
 export default function RecipeCard(props) {
@@ -155,18 +136,16 @@ export default function RecipeCard(props) {
       <div css={cardHeadWrapperCss}>
         <div css={cardCategoryCss}>{category}</div>
         <div css={iconWrapperCss}>
-          <FontAwesomeIcon css={deleteIconCss} onClick={deleteClickHandler} icon="trash" />
-          <div css={starRatingScoreCss}>
-            {Number(thumbsUp) / Number(thumbsDown)}
-            <FontAwesomeIcon css={starIconCss} icon="star" />
+          <div css={iconButtonContainer}>
+            <FontAwesomeIcon css={deleteIconCss} onClick={deleteClickHandler} icon="trash" />
           </div>
-          <FontAwesomeIcon css={iconStyleCss} onClick={favClickHandler} icon="heart" />
+          <CardRating thumbsUp={thumbsUp} thumbsDown={thumbsDown} />
+          <div css={iconButtonContainer}>
+            <FontAwesomeIcon css={iconStyleCss} onClick={favClickHandler} icon="heart" />
+          </div>
         </div>
         <div css={cardTitleCss}>{name}</div>
       </div>
-      {/* <div css={imageWrapperCss}>
-        <img src={image} alt="Recipe Hero" />
-      </div> */}
       <CardImage image={image} />
       <CardBottomButton />
     </div>
