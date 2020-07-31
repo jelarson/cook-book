@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { css } from '@emotion/core'
 
 const recipePreviewWrapperCss = css`
@@ -25,12 +25,20 @@ const previewTitleCss = css`
 
 export default function RecipePreview(props) {
   const { recipeTitle, recipeCategory, recipeIngredients, recipeInstructions } = props
+  const [modifiedCategory, setModifiedCategory] = useState('')
+
+  useEffect(() => {
+    if (recipeCategory.length > 1) {
+      setModifiedCategory(` - ${recipeCategory}`)
+    }
+  }, [recipeCategory])
+
   return (
     <div css={recipePreviewWrapperCss}>
       <div>Your Recipe Preview</div>
       <div css={recipePreviewContentWrapperCss}>
         <div css={previewTitleCss}>
-          {recipeTitle} - {recipeCategory}
+          {recipeTitle} {modifiedCategory}
         </div>
         <div>
           <ul>
