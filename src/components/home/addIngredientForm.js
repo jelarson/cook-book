@@ -11,7 +11,7 @@ export default function AddIngredientForm() {
       <form>
         <div>
           <select name="whole-measurement-num">
-            <option value="blank"> </option>
+            <option value="zero">0</option>
             <option value="one">1</option>
             <option value="two">2</option>
             <option value="three">3</option>
@@ -25,7 +25,7 @@ export default function AddIngredientForm() {
           </select>
           and
           <select name="partial-measurement-num">
-            <option value="blank"> </option>
+            <option value="zero">0</option>
             <option value="oneEighth">1/8</option>
             <option value="oneQuarter">1/4</option>
             <option value="oneThird">1/3</option>

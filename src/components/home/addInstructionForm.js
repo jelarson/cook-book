@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { css } from '@emotion/core'
 
 const addInstructionWrapperCss = css`
@@ -12,12 +12,24 @@ const instructionFormWrapperCss = css`
 `
 
 export default function AddInstructionForm() {
+  const [formInput, setFormInput] = useState('')
+  const instructionArr = []
+
+  function addInstructionHandler() {
+    instructionArr.push(formInput)
+    console.log('before', instructionArr)
+    setFormInput('')
+    console.log('after', instructionArr)
+  }
+
   return (
     <div css={addInstructionWrapperCss}>
       <form css={instructionFormWrapperCss}>
         {/* <input type="text" /> */}
-        <textarea css={instructionInputCss} />
-        <button type="button">Add an Instruction</button>
+        <textarea css={instructionInputCss} onChange={({ target }) => setFormInput(target.value)} value={formInput} />
+        <button type="button" onClick={addInstructionHandler}>
+          Add Instruction
+        </button>
       </form>
     </div>
   )
