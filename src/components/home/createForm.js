@@ -1,6 +1,9 @@
 import React from 'react'
 import { css } from '@emotion/core'
 
+import AddIngredientForm from './addIngredientForm'
+import AddInstructionForm from './addInstructionForm'
+
 const recipeAddWrapperCss = css`
   display: flex;
   flex-direction: column;
@@ -38,7 +41,9 @@ export default function CreateForm(props) {
         </div>
       </div>
       <div>
+        <AddIngredientForm />
         <button type="button">Add an Ingredient</button>
+        <AddInstructionForm />
         <button type="button">Add an Instruction</button>
       </div>
     </div>
