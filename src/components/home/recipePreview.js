@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from 'react'
 import { css } from '@emotion/core'
 
+import InstructionItem from './previewComps/instructionItems'
+
 const recipePreviewWrapperCss = css`
   display: flex;
   flex-direction: column;
@@ -33,6 +35,12 @@ export default function RecipePreview(props) {
     }
   }, [recipeCategory])
 
+  function populateInstructions() {
+    return recipeInstructions.map((instruction) => {
+      return <InstructionItem instruction={instruction} />
+    })
+  }
+
   return (
     <div css={recipePreviewWrapperCss}>
       <div>Your Recipe Preview</div>
@@ -49,9 +57,10 @@ export default function RecipePreview(props) {
           </ul>
         </div>
         <div>
-          Instructions placeholder, instructions placeholder, instructions placeholder, instructions placeholder,
-          instructions placeholder, instructions placeholder, instructions placeholder, instructions placeholder,
-          instructions placeholder, instructions placeholder
+          {/* <InstructionItem />
+          <InstructionItem />
+          <InstructionItem /> */}
+          {populateInstructions}
         </div>
       </div>
     </div>

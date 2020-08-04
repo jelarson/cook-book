@@ -17,7 +17,14 @@ const recipeAddWrapperCss = css`
 `
 
 export default function CreateForm(props) {
-  const { setRecipeTitle, setRecipeCategory, setRecipeIngredients, setRecipeInstructions } = props
+  const {
+    setRecipeTitle,
+    setRecipeCategory,
+    setRecipeIngredients,
+    setRecipeInstructions,
+    recipeIngredients,
+    recipeInstructions,
+  } = props
 
   return (
     <div css={recipeAddWrapperCss}>
@@ -43,7 +50,7 @@ export default function CreateForm(props) {
       <div>
         <AddIngredientForm />
         {/* <button type="button">Add an Ingredient</button> */}
-        <AddInstructionForm />
+        <AddInstructionForm setRecipeInstructions={setRecipeInstructions} instructionsArr={[]} />
         {/* <button type="button">Add an Instruction</button> */}
       </div>
     </div>

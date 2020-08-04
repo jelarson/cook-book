@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { css } from '@emotion/core'
 
 const addInstructionWrapperCss = css`
@@ -11,16 +11,29 @@ const instructionFormWrapperCss = css`
   width: 90%;
 `
 
-export default function AddInstructionForm() {
+export default function AddInstructionForm(props) {
+  // const { setRecipeInstructions, recipeInstructions } = props
+  const { setRecipeInstructions, instructionsArr } = props
+
   const [formInput, setFormInput] = useState('')
-  const instructionArr = []
+  // const instructionArr = recipeInstructions
 
   function addInstructionHandler() {
-    instructionArr.push(formInput)
-    console.log('before', instructionArr)
+    instructionsArr.push(formInput)
+    console.log('before', instructionsArr)
     setFormInput('')
-    console.log('after', instructionArr)
+    // setRecipeInstructions([...instructionsArr])
+    console.log('after', instructionsArr)
   }
+
+  // useEffect(() => {
+  // setRecipeInstructions(instructionsArr)
+  // }, [instructionsArr])
+
+  // useEffect(() => {
+  //   setRecipeInstructions(instructionsArr)
+  //   console.log('after', instructionsArr)
+  // }, [formInput])
 
   return (
     <div css={addInstructionWrapperCss}>

@@ -42,6 +42,8 @@ export default function RecipeCreate() {
           setRecipeCategory={setRecipeCategory}
           setRecipeIngredients={setRecipeIngredients}
           setRecipeInstructions={setRecipeInstructions}
+          recipeIngredients={recipeIngredients}
+          recipeInstructions={recipeInstructions}
         />
         <RecipePreview
           recipeTitle={recipeTitle}
