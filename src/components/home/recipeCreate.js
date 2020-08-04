@@ -32,6 +32,7 @@ export default function RecipeCreate() {
   const [recipeCategory, setRecipeCategory] = useState(' ')
   const [recipeIngredients, setRecipeIngredients] = useState(' ')
   const [recipeInstructions, setRecipeInstructions] = useState(' ')
+  const instructionsArr = [1, 2, 3]
 
   return (
     <div css={recipeCreateWrapperCss}>
@@ -44,12 +45,14 @@ export default function RecipeCreate() {
           setRecipeInstructions={setRecipeInstructions}
           recipeIngredients={recipeIngredients}
           recipeInstructions={recipeInstructions}
+          instructionsArr={instructionsArr}
         />
         <RecipePreview
           recipeTitle={recipeTitle}
           recipeCategory={recipeCategory}
           recipeIngredients={recipeIngredients}
           recipeInstructions={recipeInstructions}
+          instructionsArr={instructionsArr}
         />
       </div>
       <button type="button">Submit</button>

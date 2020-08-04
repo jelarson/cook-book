@@ -13,7 +13,7 @@ const instructionFormWrapperCss = css`
 
 export default function AddInstructionForm(props) {
   // const { setRecipeInstructions, recipeInstructions } = props
-  const { setRecipeInstructions, instructionsArr } = props
+  const { setRecipeInstructions, instructionsArr, recipeInstructions } = props
 
   const [formInput, setFormInput] = useState('')
   // const instructionArr = recipeInstructions
@@ -22,13 +22,15 @@ export default function AddInstructionForm(props) {
     instructionsArr.push(formInput)
     console.log('before', instructionsArr)
     setFormInput('')
-    // setRecipeInstructions([...instructionsArr])
     console.log('after', instructionsArr)
+    // setRecipeInstructions([...instructionsArr])
+    // console.log('ri', recipeInstructions)
   }
 
   // useEffect(() => {
-  // setRecipeInstructions(instructionsArr)
-  // }, [instructionsArr])
+  //   setRecipeInstructions(instructionsArr)
+  //   console.log('pretty boy swag', instructionsArr)
+  // }, [formInput])
 
   // useEffect(() => {
   //   setRecipeInstructions(instructionsArr)

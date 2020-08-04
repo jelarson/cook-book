@@ -24,6 +24,7 @@ export default function CreateForm(props) {
     setRecipeInstructions,
     recipeIngredients,
     recipeInstructions,
+    instructionsArr,
   } = props
 
   return (
@@ -50,7 +51,11 @@ export default function CreateForm(props) {
       <div>
         <AddIngredientForm />
         {/* <button type="button">Add an Ingredient</button> */}
-        <AddInstructionForm setRecipeInstructions={setRecipeInstructions} instructionsArr={[]} />
+        <AddInstructionForm
+          setRecipeInstructions={setRecipeInstructions}
+          instructionsArr={instructionsArr}
+          recipeInstructions={recipeInstructions}
+        />
         {/* <button type="button">Add an Instruction</button> */}
       </div>
     </div>
