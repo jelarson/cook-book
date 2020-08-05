@@ -26,13 +26,17 @@ const previewTitleCss = css`
 `
 
 export default function RecipePreview(props) {
-  const { recipeTitle, recipeCategory, recipeIngredients, recipeInstructions, instructionsArr } = props
+  const { recipeTitle, recipeCategory, recipeIngredients, recipeInstructions, instructionsArr, recipeState } = props
   const [modifiedCategory, setModifiedCategory] = useState('')
   const { instructionTempArr, setInstructionTempArr } = useState([1])
 
+  // useEffect(() => {
+  //   setInstructionTempArr([...instructionsArr])
+  // }, [instructionsArr])
+
   useEffect(() => {
-    setInstructionTempArr([...instructionsArr])
-  }, [instructionsArr])
+    console.log(recipeState)
+  }, [recipeState.instructions[0]])
 
   useEffect(() => {
     if (recipeCategory.length > 1) {
@@ -41,13 +45,14 @@ export default function RecipePreview(props) {
   }, [recipeCategory])
 
   function populateInstructions() {
-    console.log('instruction arr', instructionsArr)
-    if (instructionsArr.length > 1) {
-      console.log('there is more than one')
-    } else {
-      console.log('there is less than one')
-    }
-    return instructionTempArr.map((instruction) => {
+    // console.log('instruction arr', instructionsArr)
+    // if (instructionsArr.length > 1) {
+    //   console.log('there is more than one')
+    // } else {
+    //   console.log('there is less than one')
+    // }
+    console.log('i am updating')
+    return recipeState.instructions.map((instruction) => {
       return <InstructionItem instruction={instruction} />
     })
     // }

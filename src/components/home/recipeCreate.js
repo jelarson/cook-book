@@ -3,6 +3,7 @@ import { css } from '@emotion/core'
 
 import RecipePreview from './recipePreview'
 import CreateForm from './createForm'
+import useRecipeStateHook from './recipeStateHook'
 
 const recipeCreateWrapperCss = css`
   display: flex;
@@ -28,6 +29,8 @@ const recipeCreateContentWrapperCss = css`
 `
 
 export default function RecipeCreate() {
+  const { recipeState, updateInstructions } = useRecipeStateHook()
+
   const [recipeTitle, setRecipeTitle] = useState(' ')
   const [recipeCategory, setRecipeCategory] = useState(' ')
   const [recipeIngredients, setRecipeIngredients] = useState(' ')
@@ -46,6 +49,8 @@ export default function RecipeCreate() {
           recipeIngredients={recipeIngredients}
           recipeInstructions={recipeInstructions}
           instructionsArr={instructionsArr}
+          // updateIngredients={updateIngredients}
+          updateInstructions={updateInstructions}
         />
         <RecipePreview
           recipeTitle={recipeTitle}
@@ -53,6 +58,7 @@ export default function RecipeCreate() {
           recipeIngredients={recipeIngredients}
           recipeInstructions={recipeInstructions}
           instructionsArr={instructionsArr}
+          recipeState={recipeState}
         />
       </div>
       <button type="button">Submit</button>

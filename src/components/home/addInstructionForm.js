@@ -13,13 +13,14 @@ const instructionFormWrapperCss = css`
 
 export default function AddInstructionForm(props) {
   // const { setRecipeInstructions, recipeInstructions } = props
-  const { setRecipeInstructions, instructionsArr, recipeInstructions } = props
+  const { setRecipeInstructions, instructionsArr, recipeInstructions, updateInstructions } = props
 
   const [formInput, setFormInput] = useState('')
   // const instructionArr = recipeInstructions
 
   function addInstructionHandler() {
     instructionsArr.push(formInput)
+    updateInstructions(formInput)
     console.log('before', instructionsArr)
     setFormInput('')
     console.log('after', instructionsArr)
