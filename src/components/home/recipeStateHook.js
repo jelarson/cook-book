@@ -37,6 +37,18 @@ export default function useRecipeStateHook() {
   const updateInstructions = (value) => {
     dispatch({ type: 'instructions', payload: value })
   }
+
+  const updateIngredients = (value) => {
+    dispatch({ type: 'ingredients', payload: value })
+  }
+
+  const updateTitle = (value) => {
+    dispatch({ type: 'title', payload: value })
+  }
+
+  const updateCategory = (value) => {
+    dispatch({ type: 'category', payload: value })
+  }
   // const updateInstructions = useCallback((value) => {
   //   dispatch({ type: 'instructions', payload: value })
   // }, [])
@@ -103,7 +115,7 @@ export default function useRecipeStateHook() {
 
   // return { recipeState, updateIngredients, updateInstructions, updateTitle, updateCategory }
   // return { recipeState, updateIngredients, updateInstructions }
-  return { recipeState, updateInstructions }
+  return { recipeState, updateInstructions, updateIngredients, updateTitle, updateCategory }
 }
 
 // function myComponent(){
