@@ -21,11 +21,34 @@ export default function useRecipeStateHook() {
           ...state,
           [action.type]: [...state[action.type], action.payload],
         }
+      case 'delete_ingredient':
+        return {
+          ...state,
+          ingredients: [
+            ...state.ingredients.slice(0, state.ingredients.indexOf(action.payload)),
+            ...state.ingredients.slice(state.ingredients.indexOf(action.payload) + 1, state.ingredients.length),
+          ],
+        }
+      case 'delete_instruction':
+        return {
+          ...state,
+          instructions: [
+            ...state.instructions.slice(0, state.instructions.indexOf(action.payload)),
+            ...state.instructions.slice(state.instructions.indexOf(action.payload) + 1, state.ingstructions.length),
+          ],
+        }
       case 'title':
       case 'category':
         return {
           ...state,
           [state.type]: action.payload,
+        }
+      case 'clear':
+        return {
+          title: '',
+          category: '',
+          instructions: [],
+          ingredients: [],
         }
       default:
         console.log('no matches for case')
@@ -48,6 +71,18 @@ export default function useRecipeStateHook() {
 
   const updateCategory = (value) => {
     dispatch({ type: 'category', payload: value })
+  }
+
+  const deleteIngredient = (value) => {
+    dispatch({ type: 'delete_ingredient', payload: value })
+  }
+
+  const deleteInstruction = (value) => {
+    dispatch({ type: 'delete_instruction', payload: value })
+  }
+
+  const clearRecipe = () => {
+    dispatch({ type: 'clear' })
   }
   // const updateInstructions = useCallback((value) => {
   //   dispatch({ type: 'instructions', payload: value })
@@ -113,9 +148,19 @@ export default function useRecipeStateHook() {
   //   recipeState.category = inputCategory
   // }
 
+  const actions = {
+    updateIngredients,
+    updateInstructions,
+    updateTitle,
+    updateCategory,
+    deleteIngredient,
+    deleteInstruction,
+    clearRecipe,
+  }
+
   // return { recipeState, updateIngredients, updateInstructions, updateTitle, updateCategory }
   // return { recipeState, updateIngredients, updateInstructions }
-  return { recipeState, updateInstructions, updateIngredients, updateTitle, updateCategory }
+  return { recipeState, actions }
 }
 
 // function myComponent(){

@@ -26,7 +26,8 @@ export default function CreateForm(props) {
     recipeInstructions,
     instructionsArr,
     // updateIngredients,
-    updateInstructions,
+    // updateInstructions,
+    actions,
   } = props
 
   return (
@@ -57,7 +58,8 @@ export default function CreateForm(props) {
           setRecipeInstructions={setRecipeInstructions}
           instructionsArr={instructionsArr}
           recipeInstructions={recipeInstructions}
-          updateInstructions={updateInstructions}
+          // updateInstructions={updateInstructions}
+          actions={actions}
         />
         {/* <button type="button">Add an Instruction</button> */}
       </div>

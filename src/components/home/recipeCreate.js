@@ -29,7 +29,7 @@ const recipeCreateContentWrapperCss = css`
 `
 
 export default function RecipeCreate() {
-  const { recipeState, updateInstructions } = useRecipeStateHook()
+  const { recipeState, actions } = useRecipeStateHook()
 
   const [recipeTitle, setRecipeTitle] = useState(' ')
   const [recipeCategory, setRecipeCategory] = useState(' ')
@@ -50,7 +50,7 @@ export default function RecipeCreate() {
           recipeInstructions={recipeInstructions}
           instructionsArr={instructionsArr}
           // updateIngredients={updateIngredients}
-          updateInstructions={updateInstructions}
+          actions={actions}
         />
         <RecipePreview
           recipeTitle={recipeTitle}
