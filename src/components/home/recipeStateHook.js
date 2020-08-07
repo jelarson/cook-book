@@ -41,7 +41,7 @@ export default function useRecipeStateHook() {
       case 'category':
         return {
           ...state,
-          [state.type]: action.payload,
+          [action.type]: action.payload,
         }
       case 'clear':
         return {

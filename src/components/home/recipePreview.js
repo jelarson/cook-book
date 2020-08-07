@@ -29,7 +29,9 @@ const previewTitleCss = css`
 export default function RecipePreview(props) {
   const { recipeTitle, recipeCategory, recipeIngredients, recipeInstructions, instructionsArr, recipeState } = props
   const [modifiedCategory, setModifiedCategory] = useState('')
-  const { instructionTempArr, setInstructionTempArr } = useState([1])
+
+  console.log(recipeState)
+  // const { instructionTempArr, setInstructionTempArr } = useState([1])
 
   // useEffect(() => {
   //   setInstructionTempArr([...instructionsArr])
@@ -39,11 +41,11 @@ export default function RecipePreview(props) {
     console.log(recipeState)
   }, [recipeState.instructions[0]])
 
-  useEffect(() => {
-    if (recipeCategory.length > 1) {
-      setModifiedCategory(` - ${recipeCategory}`)
-    }
-  }, [recipeCategory])
+  // useEffect(() => {
+  //   if (recipeCategory.length > 1) {
+  //     setModifiedCategory(` - ${recipeCategory}`)
+  //   }
+  // }, [recipeCategory])
 
   function populateInstructions() {
     return recipeState.instructions.map((instruction) => {
@@ -62,7 +64,7 @@ export default function RecipePreview(props) {
       <div>Your Recipe Preview</div>
       <div css={recipePreviewContentWrapperCss}>
         <div css={previewTitleCss}>
-          {recipeTitle} {modifiedCategory}
+          {recipeState.title} {recipeState.category}
         </div>
         <div>
           <ul>

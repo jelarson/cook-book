@@ -35,14 +35,14 @@ export default function CreateForm(props) {
       <div>
         <div>Recipe Title:</div>
         <div>
-          <input type="text" onChange={({ target }) => setRecipeTitle(target.value)} />
+          <input type="text" onChange={({ target }) => actions.updateTitle(target.value)} />
         </div>
       </div>
       <div>
         <div>Category:</div>
         <div>
-          <select name="recipe-category" onChange={(e) => setRecipeCategory(e.currentTarget.value)}>
-            <option value="blank"> </option>
+          <select name="recipe-category" onChange={(e) => actions.updateCategory(e.currentTarget.value)}>
+            <option value=""> </option>
             <option value="Breakfast">Breakfast</option>
             <option value="Lunch">Lunch</option>
             <option value="Dinner">Dinner</option>
