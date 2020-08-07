@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React from 'react'
 import { css } from '@emotion/core'
 
 import RecipePreview from './recipePreview'
@@ -31,35 +31,12 @@ const recipeCreateContentWrapperCss = css`
 export default function RecipeCreate() {
   const { recipeState, actions } = useRecipeStateHook()
 
-  const [recipeTitle, setRecipeTitle] = useState(' ')
-  const [recipeCategory, setRecipeCategory] = useState(' ')
-  const [recipeIngredients, setRecipeIngredients] = useState(' ')
-  const [recipeInstructions, setRecipeInstructions] = useState(' ')
-  const instructionsArr = [1, 2, 3]
-
   return (
     <div css={recipeCreateWrapperCss}>
       <div css={recipeCreateTitleCss}>Add Your Own Recipe</div>
       <div css={recipeCreateContentWrapperCss}>
-        <CreateForm
-          setRecipeTitle={setRecipeTitle}
-          setRecipeCategory={setRecipeCategory}
-          setRecipeIngredients={setRecipeIngredients}
-          setRecipeInstructions={setRecipeInstructions}
-          recipeIngredients={recipeIngredients}
-          recipeInstructions={recipeInstructions}
-          instructionsArr={instructionsArr}
-          // updateIngredients={updateIngredients}
-          actions={actions}
-        />
-        <RecipePreview
-          recipeTitle={recipeTitle}
-          recipeCategory={recipeCategory}
-          recipeIngredients={recipeIngredients}
-          recipeInstructions={recipeInstructions}
-          instructionsArr={instructionsArr}
-          recipeState={recipeState}
-        />
+        <CreateForm actions={actions} />
+        <RecipePreview recipeState={recipeState} />
       </div>
       <button type="button">Submit</button>
     </div>

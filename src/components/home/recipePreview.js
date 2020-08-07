@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React from 'react'
 import { css } from '@emotion/core'
 
 import InstructionItem from './previewComps/instructionItems'
@@ -27,25 +27,7 @@ const previewTitleCss = css`
 `
 
 export default function RecipePreview(props) {
-  const { recipeTitle, recipeCategory, recipeIngredients, recipeInstructions, instructionsArr, recipeState } = props
-  const [modifiedCategory, setModifiedCategory] = useState('')
-
-  console.log(recipeState)
-  // const { instructionTempArr, setInstructionTempArr } = useState([1])
-
-  // useEffect(() => {
-  //   setInstructionTempArr([...instructionsArr])
-  // }, [instructionsArr])
-
-  useEffect(() => {
-    console.log(recipeState)
-  }, [recipeState.instructions[0]])
-
-  // useEffect(() => {
-  //   if (recipeCategory.length > 1) {
-  //     setModifiedCategory(` - ${recipeCategory}`)
-  //   }
-  // }, [recipeCategory])
+  const { recipeState } = props
 
   function populateInstructions() {
     return recipeState.instructions.map((instruction) => {
@@ -67,20 +49,9 @@ export default function RecipePreview(props) {
           {recipeState.title} {recipeState.category}
         </div>
         <div>
-          <ul>
-            {/* <li>ingredient placeholder</li>
-            <li>ingredient placeholder</li>
-            <li>ingredient placeholder</li>
-            <li>ingredient placeholder</li> */}
-            {populateIngredients()}
-          </ul>
+          <ul>{populateIngredients()}</ul>
         </div>
-        <div>
-          {/* <InstructionItem />
-          <InstructionItem />
-          <InstructionItem /> */}
-          {populateInstructions()}
-        </div>
+        <div>{populateInstructions()}</div>
       </div>
     </div>
   )

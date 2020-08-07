@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState } from 'react'
 import { css } from '@emotion/core'
 
 const addIngredientWrapperCss = css`
@@ -11,8 +11,6 @@ export default function AddIngredientForm(props) {
   const [partialMeasurement, setPartialMeasurement] = useState('0')
   const [measurementType, setMeasurementType] = useState('')
   const [ingredientName, setIngredientName] = useState('')
-  // const [finalStr, setFinalStr] = useState('')
-  console.log('actions', actions)
 
   function handleIngredientAdd() {
     if (ingredientName !== '') {
@@ -23,23 +21,18 @@ export default function AddIngredientForm(props) {
         actions.updateIngredients(
           `${wholeMeasurement} and ${partialMeasurement} ${measurementType} of ${ingredientName}`
         )
-        // setFinalStr(`${wholeMeasurement} and ${partialMeasurement} ${measurementType} of ${ingredientName}`)
       }
       if (wholeMeasurement === '0' && partialMeasurement !== '0' && measurementType === '') {
         actions.updateIngredients(`${partialMeasurement} ${ingredientName}`)
-        // setFinalStr(`${partialMeasurement} ${measurementType} of ${ingredientName}`)
       }
       if (wholeMeasurement === '0' && partialMeasurement !== '0' && measurementType !== '') {
         actions.updateIngredients(`${partialMeasurement} ${measurementType} of ${ingredientName}`)
-        // setFinalStr(`${partialMeasurement} ${measurementType} of ${ingredientName}`)
       }
       if (wholeMeasurement !== '0' && partialMeasurement === '0' && measurementType === '') {
         actions.updateIngredients(`${wholeMeasurement} ${ingredientName}`)
-        // setFinalStr(`${wholeMeasurement} ${measurementType} of ${ingredientName}`)
       }
       if (wholeMeasurement !== '0' && partialMeasurement === '0' && measurementType !== '') {
         actions.updateIngredients(`${wholeMeasurement} ${measurementType} of ${ingredientName}`)
-        // setFinalStr(`${wholeMeasurement} ${measurementType} of ${ingredientName}`)
       }
       if (wholeMeasurement === '0' && partialMeasurement === '0') {
         alert('please fill in either or both partial and whole measurements')
@@ -48,10 +41,6 @@ export default function AddIngredientForm(props) {
       alert('Please add an ingredient name')
     }
   }
-
-  // useEffect(() => {
-  //   console.log('this is my final string', finalStr)
-  // }, [finalStr])
 
   return (
     <div css={addIngredientWrapperCss}>
@@ -101,9 +90,6 @@ export default function AddIngredientForm(props) {
           <button type="button" onClick={handleIngredientAdd}>
             Add
           </button>
-          {/* <br />
-          <button type="button">Add Ingredient</button>
-          <button type="button">Add Instruction</button> */}
         </div>
       </form>
     </div>
