@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { css } from '@emotion/core'
 
 import InstructionItem from './previewComps/instructionItems'
+import IngredientItem from './previewComps/ingredientItem'
 
 const recipePreviewWrapperCss = css`
   display: flex;
@@ -45,17 +46,15 @@ export default function RecipePreview(props) {
   }, [recipeCategory])
 
   function populateInstructions() {
-    // console.log('instruction arr', instructionsArr)
-    // if (instructionsArr.length > 1) {
-    //   console.log('there is more than one')
-    // } else {
-    //   console.log('there is less than one')
-    // }
-    console.log('i am updating')
     return recipeState.instructions.map((instruction) => {
       return <InstructionItem instruction={instruction} />
     })
-    // }
+  }
+
+  function populateIngredients() {
+    return recipeState.ingredients.map((ingredient) => {
+      return <IngredientItem ingredient={ingredient} />
+    })
   }
 
   return (
@@ -67,10 +66,11 @@ export default function RecipePreview(props) {
         </div>
         <div>
           <ul>
+            {/* <li>ingredient placeholder</li>
             <li>ingredient placeholder</li>
             <li>ingredient placeholder</li>
-            <li>ingredient placeholder</li>
-            <li>ingredient placeholder</li>
+            <li>ingredient placeholder</li> */}
+            {populateIngredients()}
           </ul>
         </div>
         <div>

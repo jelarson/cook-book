@@ -6,28 +6,46 @@ const addIngredientWrapperCss = css`
 `
 
 export default function AddIngredientForm(props) {
-  const { acitons } = props
+  const { actions } = props
   const [wholeMeasurement, setWholeMeasurement] = useState('0')
   const [partialMeasurement, setPartialMeasurement] = useState('0')
   const [measurementType, setMeasurementType] = useState('')
   const [ingredientName, setIngredientName] = useState('')
   // const [finalStr, setFinalStr] = useState('')
+  console.log('actions', actions)
 
   function handleIngredientAdd() {
-    if (wholeMeasurement !== '0' && partialMeasurement !== '0') {
-      acitons.updateIngredients(`${wholeMeasurement} and ${partialMeasurement} ${measurementType} of ${ingredientName}`)
-      // setFinalStr(`${wholeMeasurement} and ${partialMeasurement} ${measurementType} of ${ingredientName}`)
-    }
-    if (wholeMeasurement === '0' && partialMeasurement !== '0') {
-      acitons.updateIngredients(`${partialMeasurement} ${measurementType} of ${ingredientName}`)
-      // setFinalStr(`${partialMeasurement} ${measurementType} of ${ingredientName}`)
-    }
-    if (wholeMeasurement !== '0' && partialMeasurement === '0') {
-      acitons.updateIngredients(`${wholeMeasurement} ${measurementType} of ${ingredientName}`)
-      // setFinalStr(`${wholeMeasurement} ${measurementType} of ${ingredientName}`)
-    }
-    if (wholeMeasurement === '0' && partialMeasurement === '0') {
-      alert('please fill in either or both partial and whole measurements')
+    if (ingredientName !== '') {
+      if (wholeMeasurement !== '0' && partialMeasurement !== '0' && measurementType === '') {
+        actions.updateIngredients(`${wholeMeasurement} and ${partialMeasurement} ${ingredientName}`)
+      }
+      if (wholeMeasurement !== '0' && partialMeasurement !== '0' && measurementType !== '') {
+        actions.updateIngredients(
+          `${wholeMeasurement} and ${partialMeasurement} ${measurementType} of ${ingredientName}`
+        )
+        // setFinalStr(`${wholeMeasurement} and ${partialMeasurement} ${measurementType} of ${ingredientName}`)
+      }
+      if (wholeMeasurement === '0' && partialMeasurement !== '0' && measurementType === '') {
+        actions.updateIngredients(`${partialMeasurement} ${ingredientName}`)
+        // setFinalStr(`${partialMeasurement} ${measurementType} of ${ingredientName}`)
+      }
+      if (wholeMeasurement === '0' && partialMeasurement !== '0' && measurementType !== '') {
+        actions.updateIngredients(`${partialMeasurement} ${measurementType} of ${ingredientName}`)
+        // setFinalStr(`${partialMeasurement} ${measurementType} of ${ingredientName}`)
+      }
+      if (wholeMeasurement !== '0' && partialMeasurement === '0' && measurementType === '') {
+        actions.updateIngredients(`${wholeMeasurement} ${ingredientName}`)
+        // setFinalStr(`${wholeMeasurement} ${measurementType} of ${ingredientName}`)
+      }
+      if (wholeMeasurement !== '0' && partialMeasurement === '0' && measurementType !== '') {
+        actions.updateIngredients(`${wholeMeasurement} ${measurementType} of ${ingredientName}`)
+        // setFinalStr(`${wholeMeasurement} ${measurementType} of ${ingredientName}`)
+      }
+      if (wholeMeasurement === '0' && partialMeasurement === '0') {
+        alert('please fill in either or both partial and whole measurements')
+      }
+    } else {
+      alert('Please add an ingredient name')
     }
   }
 
@@ -66,14 +84,17 @@ export default function AddIngredientForm(props) {
           </select>
           <select name="measurement-name" onChange={(e) => setMeasurementType(e.currentTarget.value)}>
             <option value="blank"> </option>
-            <option value="teaspoons">teaspoons</option>
-            <option value="tablespoons">tablespoons</option>
-            <option value="cups">cups</option>
-            <option value="pints">pints</option>
-            <option value="quarts">quarts</option>
-            <option value="ounces">Ounces</option>
-            <option value="grams">Grams</option>
-            <option value="count">Count</option>
+            <option value="tsp.">teaspoons</option>
+            <option value="tbsp.">tablespoons</option>
+            <option value="c.">cups</option>
+            <option value="qt.">quarts</option>
+            <option value="pt.">pints</option>
+            <option value="gal.">Gallon</option>
+            <option value="oz.">Ounces</option>
+            <option value="g.">Grams</option>
+            <option value="lb.">Pounds</option>
+            <option value="pkg.">Packages</option>
+            <option value="ct.">Count</option>
           </select>
           of
           <input type="text" onChange={(e) => setIngredientName(e.currentTarget.value)} />
