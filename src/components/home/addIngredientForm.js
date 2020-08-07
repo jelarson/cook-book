@@ -5,31 +5,35 @@ const addIngredientWrapperCss = css`
   display: flex;
 `
 
-export default function AddIngredientForm() {
+export default function AddIngredientForm(props) {
+  const { acitons } = props
   const [wholeMeasurement, setWholeMeasurement] = useState('0')
   const [partialMeasurement, setPartialMeasurement] = useState('0')
   const [measurementType, setMeasurementType] = useState('')
   const [ingredientName, setIngredientName] = useState('')
-  const [finalStr, setFinalStr] = useState('')
+  // const [finalStr, setFinalStr] = useState('')
 
   function handleIngredientAdd() {
     if (wholeMeasurement !== '0' && partialMeasurement !== '0') {
-      setFinalStr(`${wholeMeasurement} and ${partialMeasurement} ${measurementType} of ${ingredientName}`)
+      acitons.updateIngredients(`${wholeMeasurement} and ${partialMeasurement} ${measurementType} of ${ingredientName}`)
+      // setFinalStr(`${wholeMeasurement} and ${partialMeasurement} ${measurementType} of ${ingredientName}`)
     }
     if (wholeMeasurement === '0' && partialMeasurement !== '0') {
-      setFinalStr(`${partialMeasurement} ${measurementType} of ${ingredientName}`)
+      acitons.updateIngredients(`${partialMeasurement} ${measurementType} of ${ingredientName}`)
+      // setFinalStr(`${partialMeasurement} ${measurementType} of ${ingredientName}`)
     }
     if (wholeMeasurement !== '0' && partialMeasurement === '0') {
-      setFinalStr(`${wholeMeasurement} ${measurementType} of ${ingredientName}`)
+      acitons.updateIngredients(`${wholeMeasurement} ${measurementType} of ${ingredientName}`)
+      // setFinalStr(`${wholeMeasurement} ${measurementType} of ${ingredientName}`)
     }
     if (wholeMeasurement === '0' && partialMeasurement === '0') {
       alert('please fill in either or both partial and whole measurements')
     }
   }
 
-  useEffect(() => {
-    console.log('this is my final string', finalStr)
-  }, [finalStr])
+  // useEffect(() => {
+  //   console.log('this is my final string', finalStr)
+  // }, [finalStr])
 
   return (
     <div css={addIngredientWrapperCss}>

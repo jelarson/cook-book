@@ -52,7 +52,7 @@ export default function CreateForm(props) {
         </div>
       </div>
       <div>
-        <AddIngredientForm />
+        <AddIngredientForm actions={actions} />
         {/* <button type="button">Add an Ingredient</button> */}
         <AddInstructionForm
           setRecipeInstructions={setRecipeInstructions}
