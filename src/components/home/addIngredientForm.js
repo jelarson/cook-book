@@ -3,6 +3,18 @@ import { css } from '@emotion/core'
 
 const addIngredientWrapperCss = css`
   display: flex;
+  margin-top: 12px;
+  margin-bottom: 12px;
+  align-items: center;
+  width: 100%;
+  justify-content: center;
+  text-align: center;
+`
+
+const inputContentCss = css`
+  margin-right: 4px;
+  border: 2px solid black;
+  border-radius: 7px;
 `
 
 export default function AddIngredientForm(props) {
@@ -60,6 +72,7 @@ export default function AddIngredientForm(props) {
       <form>
         <div>
           <select
+            css={inputContentCss}
             name="whole-measurement-num"
             onChange={(e) => setWholeMeasurement(e.currentTarget.value)}
             value={wholeMeasurement}
@@ -78,8 +91,9 @@ export default function AddIngredientForm(props) {
             <option value="11">11</option>
             <option value="12">12</option>
           </select>
-          and
+          {`${'and '}`}
           <select
+            css={inputContentCss}
             name="partial-measurement-num"
             onChange={(e) => setPartialMeasurement(e.currentTarget.value)}
             value={partialMeasurement}
@@ -93,6 +107,7 @@ export default function AddIngredientForm(props) {
             <option value="3/4">3/4</option>
           </select>
           <select
+            css={inputContentCss}
             name="measurement-name"
             onChange={(e) => setMeasurementType(e.currentTarget.value)}
             value={measurementType}
@@ -110,8 +125,13 @@ export default function AddIngredientForm(props) {
             <option value="pkg.">Packages</option>
             <option value="ct.">Count</option>
           </select>
-          of
-          <input type="text" onChange={(e) => setIngredientName(e.currentTarget.value)} value={ingredientName} />
+          {`${'of '}`}
+          <input
+            css={inputContentCss}
+            type="text"
+            onChange={(e) => setIngredientName(e.currentTarget.value)}
+            value={ingredientName}
+          />
           <button type="button" onClick={handleIngredientAdd}>
             Add
           </button>
