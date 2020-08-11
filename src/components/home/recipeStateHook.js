@@ -9,6 +9,7 @@ export default function useRecipeStateHook() {
   const initialState = {
     title: '',
     category: '',
+    imageUrl: '',
     instructions: [],
     ingredients: [],
   }
@@ -39,6 +40,7 @@ export default function useRecipeStateHook() {
         }
       case 'title':
       case 'category':
+      case 'imageUrl':
         return {
           ...state,
           [action.type]: action.payload,
@@ -71,6 +73,10 @@ export default function useRecipeStateHook() {
 
   const updateCategory = (value) => {
     dispatch({ type: 'category', payload: value })
+  }
+
+  const updateImageUrl = (value) => {
+    dispatch({ type: 'imageUrl', payload: value })
   }
 
   const deleteIngredient = (value) => {
@@ -153,6 +159,7 @@ export default function useRecipeStateHook() {
     updateInstructions,
     updateTitle,
     updateCategory,
+    updateImageUrl,
     deleteIngredient,
     deleteInstruction,
     clearRecipe,
