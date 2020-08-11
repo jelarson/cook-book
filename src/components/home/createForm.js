@@ -3,6 +3,7 @@ import { css } from '@emotion/core'
 
 import AddIngredientForm from './addIngredientForm'
 import AddInstructionForm from './addInstructionForm'
+import AddImageUrlForm from './addImageUrlForm'
 
 const recipeAddWrapperCss = css`
   display: flex;
@@ -76,6 +77,7 @@ export default function CreateForm(props) {
         </div>
       </div>
       {/* <div> */}
+      <AddImageUrlForm actions={actions} />
       <AddIngredientForm actions={actions} />
       <AddInstructionForm actions={actions} />
       {/* </div> */}
