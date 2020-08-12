@@ -19,11 +19,57 @@ const recipePreviewContentWrapperCss = css`
   flex-direction: column;
 `
 
+const previewHeaderWrapper = css`
+  display: flex;
+`
+
+const titleCategoryWrapperCss = css`
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+`
+
 const previewTitleCss = css`
   width: 100%;
   display: flex;
   justify-content: center;
   text-decoration: underline;
+  text-align: center;
+`
+const previewCategoryCss = css`
+  margin-top: 14px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  color: grey;
+`
+
+const previewImageContainerCss = css`
+  display: flex;
+  justify-content: center;
+  width: 50%;
+`
+
+const previewImageWrapperCss = css`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 15vw;
+  height: 15vw;
+  padding: top: 100%;
+  border: 2px solid black;
+
+  img {
+    max-width: 100%;
+    max-height: 100%;
+  }
+`
+
+const previewImageWrapperHiddenCss = css`
+  display: none;
 `
 
 export default function RecipePreview(props) {
@@ -45,8 +91,16 @@ export default function RecipePreview(props) {
     <div css={recipePreviewWrapperCss}>
       <div>Your Recipe Preview</div>
       <div css={recipePreviewContentWrapperCss}>
-        <div css={previewTitleCss}>
-          {recipeState.title} {recipeState.category}
+        <div css={previewHeaderWrapper}>
+          <div css={titleCategoryWrapperCss}>
+            <div css={previewTitleCss}>{recipeState.title}</div>
+            <div css={previewCategoryCss}>{recipeState.category}</div>
+          </div>
+          <div css={recipeState.imageUrl.length > 1 ? previewImageContainerCss : previewImageWrapperHiddenCss}>
+            <div css={previewImageWrapperCss}>
+              <img src={recipeState.imageUrl} alt="Recipe thumbnail" />
+            </div>
+          </div>
         </div>
         <div>
           <ul>{populateIngredients()}</ul>
