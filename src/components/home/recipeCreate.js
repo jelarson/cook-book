@@ -31,6 +31,10 @@ const recipeCreateContentWrapperCss = css`
 export default function RecipeCreate() {
   const { recipeState, actions } = useRecipeStateHook()
 
+  function handleClear() {
+    actions.clearRecipe()
+  }
+
   return (
     <div css={recipeCreateWrapperCss}>
       <div css={recipeCreateTitleCss}>Add Your Own Recipe</div>
@@ -39,6 +43,14 @@ export default function RecipeCreate() {
         <RecipePreview recipeState={recipeState} />
       </div>
       <button type="button">Submit</button>
+      <button
+        type="button"
+        onClick={() => {
+          handleClear()
+        }}
+      >
+        Clear All
+      </button>
     </div>
   )
 }

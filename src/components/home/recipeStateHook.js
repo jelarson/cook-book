@@ -47,8 +47,10 @@ export default function useRecipeStateHook() {
         }
       case 'clear':
         return {
+          ...state,
           title: '',
           category: '',
+          imageUrl: '',
           instructions: [],
           ingredients: [],
         }
