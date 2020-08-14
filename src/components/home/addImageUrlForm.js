@@ -8,16 +8,41 @@ const imageHeaderCss = css`
   text-align: center;
 `
 
+const buttonAndInputWrapperCss = css`
+  display: flex;
+  margin-top: 4px;
+  flex-direciton: row;
+  width: 100%;
+  justify-content: space-around;
+`
+
 const imageInputWrapperCss = css`
   display: flex;
-  width: 100%;
+  // width: 100%;
   justify-content: center;
 `
 
 const imageInputCss = css`
   border: 2px solid black;
-  width: 80%;
+  // width: 60%;
   border-radius: 7px;
+  // margin-right: 3px;
+  // height: 18px;
+`
+
+const addImageButtonCss = css`
+  background-color: grey;
+  color: white;
+  border: black 2px solid;
+  border-radius: 7px;
+  cursor: pointer;
+  // margin-left: 3px;
+  font-size: 0.7em;
+
+  &:hover {
+    background-color: maroon;
+    color: white;
+  }
 `
 
 export default function AddImageUrlForm(props) {
@@ -31,12 +56,14 @@ export default function AddImageUrlForm(props) {
   return (
     <div>
       <div css={imageHeaderCss}>Recipe Image URL (optional):</div>
-      <div css={imageInputWrapperCss}>
-        <input css={imageInputCss} type="text" onChange={(e) => setImageUrl(e.currentTarget.value)} />
+      <div css={buttonAndInputWrapperCss}>
+        <div css={imageInputWrapperCss}>
+          <input css={imageInputCss} type="text" onChange={(e) => setImageUrl(e.currentTarget.value)} />
+        </div>
+        <button css={addImageButtonCss} type="button" onClick={handleImageButtonClick}>
+          Add Image
+        </button>
       </div>
-      <button type="button" onClick={handleImageButtonClick}>
-        Add Image
-      </button>
     </div>
   )
 }

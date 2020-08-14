@@ -13,7 +13,7 @@ const recipeAddWrapperCss = css`
   width: 50%;
 
   button {
-    margin: 8px 8px 0 8px;
+    // margin: 8px 8px 0 8px;
     height: 30px;
   }
 `
@@ -34,6 +34,7 @@ const recipeInputWrapperCss = css`
 `
 
 const inputContentWrapperCss = css`
+  margin-top: 4px;
   width: 100%;
   display: flex;
   justify-content: center;
