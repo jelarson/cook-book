@@ -44,6 +44,21 @@ const subtitleWrapperCss = css`
   justify-content: center;
 `
 
+const addIngredientButtonCss = css`
+  background-color: grey;
+  color: white;
+  border: black 2px solid;
+  border-radius: 7px;
+  cursor: pointer;
+  // margin-left: 3px;
+  font-size: 0.7em;
+
+  &:hover {
+    background-color: maroon;
+    color: white;
+  }
+`
+
 export default function AddIngredientForm(props) {
   const { actions } = props
   const [wholeMeasurement, setWholeMeasurement] = useState('0')
@@ -171,7 +186,7 @@ export default function AddIngredientForm(props) {
               value={ingredientName}
             />
           </div>
-          <button type="button" onClick={handleIngredientAdd}>
+          <button css={addIngredientButtonCss} type="button" onClick={handleIngredientAdd}>
             Add
           </button>
         </div>

@@ -16,6 +16,21 @@ const instructionFormWrapperCss = css`
   width: 90%;
 `
 
+const addInstructionButtonCss = css`
+  background-color: grey;
+  color: white;
+  border: black 2px solid;
+  border-radius: 7px;
+  cursor: pointer;
+  // margin-left: 3px;
+  font-size: 0.7em;
+
+  &:hover {
+    background-color: maroon;
+    color: white;
+  }
+`
+
 export default function AddInstructionForm(props) {
   const { actions } = props
 
@@ -35,7 +50,7 @@ export default function AddInstructionForm(props) {
           onChange={({ target }) => setFormInput(target.value)}
           value={formInput}
         />
-        <button type="button" onClick={addInstructionHandler}>
+        <button css={addInstructionButtonCss} type="button" onClick={addInstructionHandler}>
           Add Instruction
         </button>
       </form>
