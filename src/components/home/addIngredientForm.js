@@ -52,8 +52,8 @@ export default function AddIngredientForm(props) {
   const [ingredientName, setIngredientName] = useState('')
 
   function reset() {
-    setWholeMeasurement('')
-    setPartialMeasurement('')
+    setWholeMeasurement('0')
+    setPartialMeasurement('0')
     setMeasurementType('')
     setIngredientName('')
   }

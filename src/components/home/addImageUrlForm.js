@@ -51,6 +51,11 @@ export default function AddImageUrlForm(props) {
 
   function handleImageButtonClick() {
     actions.updateImageUrl(imageUrl)
+    reset()
+  }
+
+  function reset() {
+    setImageUrl('')
   }
 
   return (
@@ -58,7 +63,12 @@ export default function AddImageUrlForm(props) {
       <div css={imageHeaderCss}>Recipe Image URL (optional):</div>
       <div css={buttonAndInputWrapperCss}>
         <div css={imageInputWrapperCss}>
-          <input css={imageInputCss} type="text" onChange={(e) => setImageUrl(e.currentTarget.value)} />
+          <input
+            css={imageInputCss}
+            type="text"
+            value={imageUrl}
+            onChange={(e) => setImageUrl(e.currentTarget.value)}
+          />
         </div>
         <button css={addImageButtonCss} type="button" onClick={handleImageButtonClick}>
           Add Image
