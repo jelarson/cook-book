@@ -28,6 +28,26 @@ const recipeCreateContentWrapperCss = css`
   padding-top: 5px;
 `
 
+const formButtonWrapperCss = css`
+  display: flex;
+  width: 100%;
+  justify-content: space-around;
+`
+
+const formButtonCss = css`
+  background-color: grey;
+  color: white;
+  border: black 2px solid;
+  border-radius: 7px;
+  cursor: pointer;
+  font-size: 1.3em;
+
+  &:hover {
+    background-color: maroon;
+    color: white;
+  }
+`
+
 export default function RecipeCreate() {
   const { recipeState, actions } = useRecipeStateHook()
 
@@ -42,15 +62,20 @@ export default function RecipeCreate() {
         <CreateForm actions={actions} />
         <RecipePreview recipeState={recipeState} />
       </div>
-      <button type="button">Submit</button>
-      <button
-        type="button"
-        onClick={() => {
-          handleClear()
-        }}
-      >
-        Clear All
-      </button>
+      <div css={formButtonWrapperCss}>
+        <button css={formButtonCss} type="button">
+          Submit
+        </button>
+        <button
+          css={formButtonCss}
+          type="button"
+          onClick={() => {
+            handleClear()
+          }}
+        >
+          Clear All
+        </button>
+      </div>
     </div>
   )
 }
