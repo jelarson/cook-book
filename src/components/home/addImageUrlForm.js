@@ -65,6 +65,7 @@ export default function AddImageUrlForm(props) {
         <div css={imageInputWrapperCss}>
           <input
             css={imageInputCss}
+            placeholder="Add Image URL here!"
             type="text"
             value={imageUrl}
             onChange={(e) => setImageUrl(e.currentTarget.value)}

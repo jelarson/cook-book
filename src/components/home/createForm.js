@@ -56,7 +56,12 @@ export default function CreateForm(props) {
         <div css={recipeInputWrapperCss}>
           <div>Recipe Title:</div>
           <div css={inputContentWrapperCss}>
-            <input css={inputContentCss} type="text" onChange={({ target }) => actions.updateTitle(target.value)} />
+            <input
+              css={inputContentCss}
+              placeholder="Add Title here!"
+              type="text"
+              onChange={({ target }) => actions.updateTitle(target.value)}
+            />
           </div>
         </div>
         <div css={recipeInputWrapperCss}>
