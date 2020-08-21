@@ -13,9 +13,16 @@ const starIconCss = css`
 
 export default function CardImage(props) {
   const { thumbsUp, thumbsDown } = props
+
+  function calcRating(up, down) {
+    if (down > 0) {
+      return up / down
+    }
+    return 'No Rating Yet'
+  }
   return (
     <div css={starRatingScoreCss}>
-      {Number(thumbsUp) / Number(thumbsDown)}
+      {calcRating(Number(thumbsUp), Number(thumbsDown))}
       <FontAwesomeIcon css={starIconCss} icon="star" />
     </div>
   )
