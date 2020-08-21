@@ -1,5 +1,6 @@
 import React from 'react'
 import { css } from '@emotion/core'
+import axios from 'axios'
 
 import RecipePreview from './recipePreview'
 import CreateForm from './createForm'
@@ -55,6 +56,22 @@ export default function RecipeCreate() {
     actions.clearRecipe()
   }
 
+  function handleSubmit() {
+    axios
+      .post('https://jel-family-cookbook-db.herokuapp.com/recipe', {
+        name: recipeState.title,
+        category: recipeState.category,
+        recipeImage: recipeState.imageUrl,
+        ingredients: recipeState.ingredients.join(', '),
+        instructions: recipeState.instructions.join(', '),
+        thumbsUp: '0',
+        thumbsDown: '0',
+        favorite: 'false',
+      })
+      .then(handleClear())
+      .catch((err) => console.log(err), console.log(recipeState.imageUrl.length))
+  }
+
   return (
     <div css={recipeCreateWrapperCss}>
       <div css={recipeCreateTitleCss}>Add Your Own Recipe</div>
@@ -63,7 +80,13 @@ export default function RecipeCreate() {
         <RecipePreview recipeState={recipeState} />
       </div>
       <div css={formButtonWrapperCss}>
-        <button css={formButtonCss} type="button">
+        <button
+          css={formButtonCss}
+          type="button"
+          onClick={() => {
+            handleSubmit()
+          }}
+        >
           Submit
         </button>
         <button
