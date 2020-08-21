@@ -57,34 +57,44 @@ export default function RecipeCreate() {
   }
 
   function handleSubmit() {
-    if (recipeState.imageUrl.length < 2) {
-      axios
-        .post('https://jel-family-cookbook-db.herokuapp.com/recipe', {
-          name: recipeState.title,
-          category: recipeState.category,
-          recipeImage: 'https://source.unsplash.com/random',
-          ingredients: recipeState.ingredients.join(', '),
-          instructions: recipeState.instructions.join(', '),
-          thumbsUp: '0',
-          thumbsDown: '0',
-          favorite: 'false',
-        })
-        .then(handleClear())
-        .catch((err) => console.log(err), console.log(recipeState.imageUrl.length))
+    if (
+      recipeState.tile.length > 0 &&
+      recipeState.category.length > 1 &&
+      recipeState.ingredients.length > 0 &&
+      recipeState.instructions.length > 0
+    ) {
+      if (recipeState.imageUrl.length < 2) {
+        axios
+          .post('https://jel-family-cookbook-db.herokuapp.com/recipe', {
+            name: recipeState.title,
+            category: recipeState.category,
+            recipeImage: 'https://source.unsplash.com/random',
+            ingredients: recipeState.ingredients.join(', '),
+            instructions: recipeState.instructions.join(', '),
+            thumbsUp: '0',
+            thumbsDown: '0',
+            favorite: 'false',
+          })
+          .then(handleClear())
+          .catch((err) => console.log(err))
+      } else {
+        axios
+          .post('https://jel-family-cookbook-db.herokuapp.com/recipe', {
+            name: recipeState.title,
+            category: recipeState.category,
+            recipeImage: recipeState.imageUrl,
+            ingredients: recipeState.ingredients.join(', '),
+            instructions: recipeState.instructions.join(', '),
+            thumbsUp: '0',
+            thumbsDown: '0',
+            favorite: 'false',
+          })
+          .then(handleClear())
+          .catch((err) => console.log(err), console.log(recipeState.imageUrl.length))
+      }
+    } else {
+      alert('Please fill in a Recipe Name, Category and at least one ingredient and one instruction.')
     }
-    axios
-      .post('https://jel-family-cookbook-db.herokuapp.com/recipe', {
-        name: recipeState.title,
-        category: recipeState.category,
-        recipeImage: recipeState.imageUrl,
-        ingredients: recipeState.ingredients.join(', '),
-        instructions: recipeState.instructions.join(', '),
-        thumbsUp: '0',
-        thumbsDown: '0',
-        favorite: 'false',
-      })
-      .then(handleClear())
-      .catch((err) => console.log(err), console.log(recipeState.imageUrl.length))
   }
 
   return (
