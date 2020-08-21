@@ -57,6 +57,21 @@ export default function RecipeCreate() {
   }
 
   function handleSubmit() {
+    if (recipeState.imageUrl.length < 2) {
+      axios
+        .post('https://jel-family-cookbook-db.herokuapp.com/recipe', {
+          name: recipeState.title,
+          category: recipeState.category,
+          recipeImage: 'https://source.unsplash.com/random',
+          ingredients: recipeState.ingredients.join(', '),
+          instructions: recipeState.instructions.join(', '),
+          thumbsUp: '0',
+          thumbsDown: '0',
+          favorite: 'false',
+        })
+        .then(handleClear())
+        .catch((err) => console.log(err), console.log(recipeState.imageUrl.length))
+    }
     axios
       .post('https://jel-family-cookbook-db.herokuapp.com/recipe', {
         name: recipeState.title,
