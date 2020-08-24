@@ -5,6 +5,7 @@ import { Global, css } from '@emotion/core'
 import Home from './home/home'
 import AllRecipes from './allRecipes/allRecipes'
 import MyCookbook from './myCookbook/myCookbook'
+import RecipeItemPage from './recipeItemPage/recipeItemPage'
 import Icons from './icons/icons'
 
 export default function App() {
@@ -25,6 +26,7 @@ export default function App() {
             <Route exact path="/" component={Home} />
             <Route exact path="/mycookbook" component={MyCookbook} />
             <Route exact path="/allrecipes" component={AllRecipes} />
+            <Route exact path="/recipe/:slug" component={RecipeItemPage} />
           </Switch>
         </div>
       </Router>
