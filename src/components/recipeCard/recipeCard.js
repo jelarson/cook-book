@@ -3,6 +3,7 @@ import { css } from '@emotion/core'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import axios from 'axios'
 
+import { faThumbsDown } from '@fortawesome/free-solid-svg-icons'
 import CardRating from './cardRating'
 import CardImage from './cardImage'
 import CardBottomButton from './cardBottomButton'
@@ -147,7 +148,17 @@ export default function RecipeCard(props) {
         <div css={cardTitleCss}>{name}</div>
       </div>
       <CardImage image={image} />
-      <CardBottomButton />
+      <CardBottomButton
+        name={name}
+        category={category}
+        image={image}
+        id={id}
+        ingredients={ingredients}
+        instructions={instructions}
+        thumbsUp={thumbsUp}
+        thumbsDown={thumbsDown}
+        favorite={favorite}
+      />
     </div>
   )
 }

@@ -26,7 +26,7 @@ export default function App() {
             <Route exact path="/" component={Home} />
             <Route exact path="/mycookbook" component={MyCookbook} />
             <Route exact path="/allrecipes" component={AllRecipes} />
-            <Route exact path="/recipe/:slug" component={RecipeItemPage} />
+            <Route exact path="/viewrecipe" component={RecipeItemPage} />
           </Switch>
         </div>
       </Router>
