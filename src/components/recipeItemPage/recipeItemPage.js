@@ -55,14 +55,14 @@ export default function RecipeItemPage(props) {
 
   function displayIngredients() {
     console.log(ingredients.split(', '))
-    ingredients.split(', ').map((ingredient) => {
+    return ingredients.split(', ').map((ingredient) => {
       return <li>{ingredient}</li>
     })
   }
 
   function displayInstructions() {
     console.log(instructions.split(', '))
-    instructions.split(', ').map((instruction) => {
+    return instructions.split(', ').map((instruction) => {
       return <div>{instruction}</div>
     })
   }
