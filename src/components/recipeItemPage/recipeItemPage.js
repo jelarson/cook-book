@@ -3,6 +3,7 @@ import { css } from '@emotion/core'
 
 import Navbar from '../navbar/navbar'
 import Footer from '../footer/footer'
+import AddRating from './addRating'
 
 const recipeItemPageWrapperCss = css`
   display: flex;
@@ -14,6 +15,12 @@ const recipeTitleCss = css`
   width: 100%;
   justify-content: center;
   font-size: 1.7em;
+  text-align: center;
+
+  span {
+    font-size: 1.3em;
+    color: grey;
+  }
 `
 const recipeItemRecipeWrapperCss = css`
   display: flex;
@@ -23,9 +30,17 @@ const recipeItemRecipeWrapperCss = css`
 
 const recipeImageCss = css`
   display: flex;
-  width: 40vw;
-  align-items: center;
   justify-content: center;
+  align-items: center;
+  width: 40vw;
+  // height: 15vw;
+  // padding: top: 100%;
+  border: 2px solid black;
+
+  img {
+    max-width: 100%;
+    max-height: 100%;
+  }
 `
 
 const recipeContentWrapperCss = css`
@@ -38,27 +53,44 @@ export default function RecipeItemPage(props) {
   const { location } = props
   const { name, category, image, id, ingredients, instructions, thumbsUp, thumbsDown, favorite } = location.state
 
+  function displayIngredients() {
+    console.log(ingredients.split(', '))
+    ingredients.split(', ').map((ingredient) => {
+      return <li>{ingredient}</li>
+    })
+  }
+
+  function displayInstructions() {
+    console.log(instructions.split(', '))
+    instructions.split(', ').map((instruction) => {
+      return <div>{instruction}</div>
+    })
+  }
+
   return (
     <div>
       <Navbar />
       <div css={recipeItemPageWrapperCss}>
-        <div css={recipeTitleCss}>{name}</div>
+        <div css={recipeTitleCss}>
+          {name}
+          <br />
+          <span>{category}</span>
+        </div>
         <div css={recipeItemRecipeWrapperCss}>
           <div css={recipeImageCss}>
-            Image Placeholder
-            {image}
+            <img src={image} alt="Recipe thumbnail" />
           </div>
           <div css={recipeContentWrapperCss}>
-            {ingredients}
-            {instructions}
+            <ul>{displayIngredients()}</ul>
+            {displayInstructions()}
           </div>
         </div>
       </div>
       <div>
-        {category}
-        {id}
-        {thumbsUp}
-        {thumbsDown}
+        {/* {id} */}
+        <AddRating thumbsUp={thumbsUp} thumbsDown={thumbsDown} id={id} />
+        {/* {thumbsUp} */}
+        {/* {thumbsDown} */}
         {favorite}
       </div>
       <Footer />

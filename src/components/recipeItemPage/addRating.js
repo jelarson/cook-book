@@ -11,8 +11,8 @@ const starIconCss = css`
   margin-left: 3px;
 `
 
-export default function CardRating(props) {
-  const { thumbsUp, thumbsDown } = props
+export default function AddRating(props) {
+  const { thumbsUp, thumbsDown, id } = props
 
   function calcRating(up, down) {
     if (down > 0) {
