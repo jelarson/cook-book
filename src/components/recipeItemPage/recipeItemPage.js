@@ -4,6 +4,7 @@ import { css } from '@emotion/core'
 import Navbar from '../navbar/navbar'
 import Footer from '../footer/footer'
 import AddRating from './addRating'
+import Favorite from './favorite'
 
 const recipeItemPageWrapperCss = css`
   display: flex;
@@ -91,7 +92,8 @@ export default function RecipeItemPage(props) {
         <AddRating thumbsUp={thumbsUp} thumbsDown={thumbsDown} id={id} />
         {/* {thumbsUp} */}
         {/* {thumbsDown} */}
-        {favorite}
+        <Favorite favorite={favorite} />
+        {/* {favorite} */}
       </div>
       <Footer />
     </div>
