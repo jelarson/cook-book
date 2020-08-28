@@ -13,23 +13,26 @@ const starIconCss = css`
 
 const starblockCss = css`
   display: flex;
+  cursor: pointer;
 `
 
-const starInvisible = css`
-  display: none;
+const starIconDarkCss = css`
+  color: black;
+  margin-left: 3px;
 `
 
 export default function AddRating(props) {
-  const [starOneVisible, setStarOneVisible] = useState(true)
-  const [starOneHalfVisible, setStarOneHalfVisible] = useState(true)
-  const [starTwoVisible, setStarTwoVisible] = useState(true)
-  const [starTwoHalfVisible, setStarTwoHalfVisible] = useState(true)
-  const [starThreeVisible, setStarThreeVisible] = useState(true)
-  const [starThreeHalfVisible, setStarThreeHalfVisible] = useState(true)
-  const [starFourVisible, setStarFourVisible] = useState(true)
-  const [starFourHalfVisible, setStarFourHalfVisible] = useState(true)
-  const [starFiveVisible, setStarFiveVisible] = useState(true)
-  const [starFiveHalfVisible, setStarFiveHalfVisible] = useState(true)
+  const [starOneVisible, setStarOneVisible] = useState(false)
+  const [starOneHalfVisible, setStarOneHalfVisible] = useState(false)
+  const [starTwoVisible, setStarTwoVisible] = useState(false)
+  const [starTwoHalfVisible, setStarTwoHalfVisible] = useState(false)
+  const [starThreeVisible, setStarThreeVisible] = useState(false)
+  const [starThreeHalfVisible, setStarThreeHalfVisible] = useState(false)
+  const [starFourVisible, setStarFourVisible] = useState(false)
+  const [starFourHalfVisible, setStarFourHalfVisible] = useState(false)
+  const [starFiveVisible, setStarFiveVisible] = useState(false)
+  const [starFiveHalfVisible, setStarFiveHalfVisible] = useState(false)
+  const [voteValue, setVoteValue] = useState(0)
 
   const { thumbsUp, thumbsDown, id } = props
 
@@ -44,16 +47,36 @@ export default function AddRating(props) {
       {calcRating(Number(thumbsUp), Number(thumbsDown))}
       <FontAwesomeIcon css={starIconCss} icon="star" />
       <div css={starblockCss}>
-        <FontAwesomeIcon css={starIconCss} icon="star" />
-        <FontAwesomeIcon css={starIconCss} icon="star-half-alt" />
-        <FontAwesomeIcon css={starIconCss} icon="star" />
-        <FontAwesomeIcon css={starIconCss} icon="star-half-alt" />
-        <FontAwesomeIcon css={starIconCss} icon="star" />
-        <FontAwesomeIcon css={starIconCss} icon="star-half-alt" />
-        <FontAwesomeIcon css={starIconCss} icon="star" />
-        <FontAwesomeIcon css={starIconCss} icon="star-half-alt" />
-        <FontAwesomeIcon css={starIconCss} icon="star" />
-        <FontAwesomeIcon css={starIconCss} icon="star-half-alt" />
+        <FontAwesomeIcon
+          css={starOneVisible ? starIconCss : starIconDarkCss}
+          icon="star"
+          onMouseEnter={() => setVoteValue(1)}
+        />
+        <FontAwesomeIcon css={starOneHalfVisible ? starIconCss : starIconDarkCss} icon="star-half-alt" />
+        <FontAwesomeIcon
+          css={starTwoVisible ? starIconCss : starIconDarkCss}
+          icon="star"
+          onMouseEnter={() => setVoteValue(2)}
+        />
+        <FontAwesomeIcon css={starTwoHalfVisible ? starIconCss : starIconDarkCss} icon="star-half-alt" />
+        <FontAwesomeIcon
+          css={starThreeVisible ? starIconCss : starIconDarkCss}
+          icon="star"
+          onMouseEnter={() => setVoteValue(3)}
+        />
+        <FontAwesomeIcon css={starThreeHalfVisible ? starIconCss : starIconDarkCss} icon="star-half-alt" />
+        <FontAwesomeIcon
+          css={starFourVisible ? starIconCss : starIconDarkCss}
+          icon="star"
+          onMouseEnter={() => setVoteValue(4)}
+        />
+        <FontAwesomeIcon css={starFourHalfVisible ? starIconCss : starIconDarkCss} icon="star-half-alt" />
+        <FontAwesomeIcon
+          css={starFiveVisible ? starIconCss : starIconDarkCss}
+          icon="star"
+          onMouseEnter={() => setVoteValue(5)}
+        />
+        <FontAwesomeIcon css={starFiveHalfVisible ? starIconCss : starIconDarkCss} icon="star-half-alt" />
       </div>
       <FontAwesomeIcon icon="star-half" />
       <FontAwesomeIcon icon="star-half-alt" />
