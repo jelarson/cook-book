@@ -21,6 +21,15 @@ const starInvisible = css`
 
 export default function AddRating(props) {
   const [starOneVisible, setStarOneVisible] = useState(true)
+  const [starOneHalfVisible, setStarOneHalfVisible] = useState(true)
+  const [starTwoVisible, setStarTwoVisible] = useState(true)
+  const [starTwoHalfVisible, setStarTwoHalfVisible] = useState(true)
+  const [starThreeVisible, setStarThreeVisible] = useState(true)
+  const [starThreeHalfVisible, setStarThreeHalfVisible] = useState(true)
+  const [starFourVisible, setStarFourVisible] = useState(true)
+  const [starFourHalfVisible, setStarFourHalfVisible] = useState(true)
+  const [starFiveVisible, setStarFiveVisible] = useState(true)
+  const [starFiveHalfVisible, setStarFiveHalfVisible] = useState(true)
 
   const { thumbsUp, thumbsDown, id } = props
 
