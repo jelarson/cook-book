@@ -11,6 +11,12 @@ const starIconCss = css`
   margin-left: 3px;
 `
 
+const starIconRightHalfCss = css`
+  color: gold;
+  transform: rotateY(180deg);
+  margin-left: 3px;
+`
+
 const starblockCss = css`
   display: flex;
   cursor: pointer;
@@ -18,6 +24,12 @@ const starblockCss = css`
 
 const starIconDarkCss = css`
   color: black;
+  margin-left: 3px;
+`
+
+const starIconRightHalfDarkCss = css`
+  color: black;
+  transform: rotateY(180deg);
   margin-left: 3px;
 `
 
@@ -39,28 +51,58 @@ export default function AddRating(props) {
   useEffect(() => {
     if (voteValue === 0) {
       setStarOneVisible(false)
+      setStarOneHalfVisible(false)
       setStarTwoVisible(false)
+      setStarTwoHalfVisible(false)
       setStarThreeVisible(false)
+      setStarThreeHalfVisible(false)
       setStarFourVisible(false)
+      setStarFourHalfVisible(false)
       setStarFiveVisible(false)
+      setStarFiveHalfVisible(false)
+    }
+    if (voteValue === 0.5) {
+      setStarOneHalfVisible(true)
     }
     if (voteValue === 1) {
       setStarOneVisible(true)
     }
+    if (voteValue === 1.5) {
+      setStarOneVisible(true)
+      setStarTwoHalfVisible(true)
+    }
     if (voteValue === 2) {
       setStarOneVisible(true)
       setStarTwoVisible(true)
+    }
+    if (voteValue === 2.5) {
+      setStarOneVisible(true)
+      setStarTwoVisible(true)
+      setStarThreeHalfVisible(true)
     }
     if (voteValue === 3) {
       setStarOneVisible(true)
       setStarTwoVisible(true)
       setStarThreeVisible(true)
     }
+    if (voteValue === 3.5) {
+      setStarOneVisible(true)
+      setStarTwoVisible(true)
+      setStarThreeVisible(true)
+      setStarFourHalfVisible(true)
+    }
     if (voteValue === 4) {
       setStarOneVisible(true)
       setStarTwoVisible(true)
       setStarThreeVisible(true)
       setStarFourVisible(true)
+    }
+    if (voteValue === 4.5) {
+      setStarOneVisible(true)
+      setStarTwoVisible(true)
+      setStarThreeVisible(true)
+      setStarFourVisible(true)
+      setStarFiveHalfVisible(true)
     }
     if (voteValue === 5) {
       setStarOneVisible(true)
@@ -83,40 +125,65 @@ export default function AddRating(props) {
       <FontAwesomeIcon css={starIconCss} icon="star" />
       <div css={starblockCss}>
         <FontAwesomeIcon
+          css={starOneHalfVisible ? starIconRightHalfCss : starIconRightHalfDarkCss}
+          icon="star-half-alt"
+          onMouseEnter={() => setVoteValue(0.5)}
+          onMouseLeave={() => setVoteValue(0)}
+        />
+        <FontAwesomeIcon
           css={starOneVisible ? starIconCss : starIconDarkCss}
           icon="star"
           onMouseEnter={() => setVoteValue(1)}
           onMouseLeave={() => setVoteValue(0)}
         />
-        <FontAwesomeIcon css={starOneHalfVisible ? starIconCss : starIconDarkCss} icon="star-half-alt" />
+        <FontAwesomeIcon
+          css={starTwoHalfVisible ? starIconRightHalfCss : starIconRightHalfDarkCss}
+          icon="star-half-alt"
+          onMouseEnter={() => setVoteValue(1.5)}
+          onMouseLeave={() => setVoteValue(0)}
+        />
         <FontAwesomeIcon
           css={starTwoVisible ? starIconCss : starIconDarkCss}
           icon="star"
           onMouseEnter={() => setVoteValue(2)}
           onMouseLeave={() => setVoteValue(0)}
         />
-        <FontAwesomeIcon css={starTwoHalfVisible ? starIconCss : starIconDarkCss} icon="star-half-alt" />
+        <FontAwesomeIcon
+          css={starThreeHalfVisible ? starIconRightHalfCss : starIconRightHalfDarkCss}
+          icon="star-half-alt"
+          onMouseEnter={() => setVoteValue(2.5)}
+          onMouseLeave={() => setVoteValue(0)}
+        />
         <FontAwesomeIcon
           css={starThreeVisible ? starIconCss : starIconDarkCss}
           icon="star"
           onMouseEnter={() => setVoteValue(3)}
           onMouseLeave={() => setVoteValue(0)}
         />
-        <FontAwesomeIcon css={starThreeHalfVisible ? starIconCss : starIconDarkCss} icon="star-half-alt" />
+        <FontAwesomeIcon
+          css={starFourHalfVisible ? starIconRightHalfCss : starIconRightHalfDarkCss}
+          icon="star-half-alt"
+          onMouseEnter={() => setVoteValue(3.5)}
+          onMouseLeave={() => setVoteValue(0)}
+        />
         <FontAwesomeIcon
           css={starFourVisible ? starIconCss : starIconDarkCss}
           icon="star"
           onMouseEnter={() => setVoteValue(4)}
           onMouseLeave={() => setVoteValue(0)}
         />
-        <FontAwesomeIcon css={starFourHalfVisible ? starIconCss : starIconDarkCss} icon="star-half-alt" />
+        <FontAwesomeIcon
+          css={starFiveHalfVisible ? starIconRightHalfCss : starIconRightHalfDarkCss}
+          icon="star-half-alt"
+          onMouseEnter={() => setVoteValue(4.5)}
+          onMouseLeave={() => setVoteValue(0)}
+        />
         <FontAwesomeIcon
           css={starFiveVisible ? starIconCss : starIconDarkCss}
           icon="star"
           onMouseEnter={() => setVoteValue(5)}
           onMouseLeave={() => setVoteValue(0)}
         />
-        <FontAwesomeIcon css={starFiveHalfVisible ? starIconCss : starIconDarkCss} icon="star-half-alt" />
       </div>
       {/* <FontAwesomeIcon icon="star-half" />
       <FontAwesomeIcon icon="star-half-alt" /> */}
