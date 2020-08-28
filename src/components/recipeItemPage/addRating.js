@@ -13,7 +13,7 @@ const starIconCss = css`
 
 const starIconRightHalfCss = css`
   color: gold;
-  transform: rotateY(180deg);
+  // transform: rotateY(180deg);
   margin-left: 3px;
 `
 
@@ -29,8 +29,28 @@ const starIconDarkCss = css`
 
 const starIconRightHalfDarkCss = css`
   color: black;
-  transform: rotateY(180deg);
+  // transform: rotateY(180deg);
   margin-left: 3px;
+`
+
+const starIconTestCss = css`
+  color: black;
+  margin-right: -12px;
+  border: 1px solid black;
+
+  &:hover {
+    color: gold;
+  }
+`
+const starIconTestRightCss = css`
+  color: black;
+  margin-left: -6px;
+  transform: rotateY(180deg);
+  border: 1px solid black;
+
+  &:hover {
+    color: gold;
+  }
 `
 
 export default function AddRating(props) {
@@ -124,6 +144,12 @@ export default function AddRating(props) {
       {calcRating(Number(thumbsUp), Number(thumbsDown))}
       <FontAwesomeIcon css={starIconCss} icon="star" />
       <div css={starblockCss}>
+        <div>
+          <FontAwesomeIcon css={starIconTestCss} icon="star-half" />
+        </div>
+        {/* <div onMouseEnter={() =>}> */}
+        <FontAwesomeIcon css={starIconTestRightCss} icon="star-half" />
+        {/* </div> */}
         <FontAwesomeIcon
           css={starOneHalfVisible ? starIconRightHalfCss : starIconRightHalfDarkCss}
           icon="star-half-alt"

@@ -5,6 +5,7 @@ import Navbar from '../navbar/navbar'
 import Footer from '../footer/footer'
 import AddRating from './addRating'
 import Favorite from './favorite'
+import Practive from './practive'
 
 const recipeItemPageWrapperCss = css`
   display: flex;
@@ -82,14 +83,19 @@ export default function RecipeItemPage(props) {
             <img src={image} alt="Recipe thumbnail" />
           </div>
           <div css={recipeContentWrapperCss}>
-            <ul>{displayIngredients()}</ul>
+            <ul>
+              {ingredients.split(', ').map((ingredient) => {
+                return <li>{ingredient}</li>
+              })}
+            </ul>
             {displayInstructions()}
           </div>
         </div>
       </div>
       <div>
         {/* {id} */}
-        <AddRating thumbsUp={thumbsUp} thumbsDown={thumbsDown} id={id} />
+        {/* <AddRating thumbsUp={thumbsUp} thumbsDown={thumbsDown} id={id} /> */}
+        <Practive />
         {/* {thumbsUp} */}
         {/* {thumbsDown} */}
         <Favorite favorite={favorite} />
@@ -99,3 +105,5 @@ export default function RecipeItemPage(props) {
     </div>
   )
 }
+
+// ingredients = []
