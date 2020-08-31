@@ -37,11 +37,9 @@ export default function AddRating(props) {
   const [rating, setRating] = useState(0)
   const [canVote, setCanVote] = useState(true)
 
-  const someFunc = (star, halfPoint) => {
-    // if (canVote) {
+  const typeDecider = (star, halfPoint) => {
     if (rating === halfPoint) return 'half'
     return rating >= star ? 'filled' : 'empty'
-    // }
   }
 
   function handleVote() {
@@ -54,7 +52,7 @@ export default function AddRating(props) {
 
   return (
     <div css={ratingWrapperCss}>
-      <div star-type={someFunc(1, 0.5)} css={starWrapperCss}>
+      <div star-type={typeDecider(1, 0.5)} css={starWrapperCss}>
         <span
           onMouseOver={() => {
             if (canVote) {
@@ -72,7 +70,7 @@ export default function AddRating(props) {
           onClick={() => handleVote()}
         />
       </div>
-      <div star-type={someFunc(2, 1.5)} css={starWrapperCss}>
+      <div star-type={typeDecider(2, 1.5)} css={starWrapperCss}>
         <span
           onMouseOver={() => {
             if (canVote) {
@@ -90,7 +88,7 @@ export default function AddRating(props) {
           onClick={() => handleVote()}
         />
       </div>
-      <div star-type={someFunc(3, 2.5)} css={starWrapperCss}>
+      <div star-type={typeDecider(3, 2.5)} css={starWrapperCss}>
         <span
           onMouseOver={() => {
             if (canVote) {
@@ -108,7 +106,7 @@ export default function AddRating(props) {
           onClick={() => handleVote()}
         />
       </div>
-      <div star-type={someFunc(4, 3.5)} css={starWrapperCss}>
+      <div star-type={typeDecider(4, 3.5)} css={starWrapperCss}>
         <span
           onMouseOver={() => {
             if (canVote) {
@@ -126,7 +124,7 @@ export default function AddRating(props) {
           onClick={() => handleVote()}
         />
       </div>
-      <div star-type={someFunc(5, 4.5)} css={starWrapperCss}>
+      <div star-type={typeDecider(5, 4.5)} css={starWrapperCss}>
         <span
           onMouseOver={() => {
             if (canVote) {
@@ -146,7 +144,7 @@ export default function AddRating(props) {
       </div>
       {!canVote && (
         <div>
-          <div>You've rated this recipe a {rating} out of 5</div>
+          <div>You&apos;ve rated this recipe a {rating} out of 5</div>
           <button type="button" onClick={() => handleVoteChange()}>
             Change rating?
           </button>
