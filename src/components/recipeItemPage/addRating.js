@@ -1,3 +1,5 @@
+/* eslint-disable jsx-a11y/click-events-have-key-events */
+/* eslint-disable jsx-a11y/no-static-element-interactions */
 /* eslint-disable jsx-a11y/mouse-events-have-key-events */
 import React, { useState } from 'react'
 import { css } from '@emotion/core'
@@ -31,7 +33,7 @@ const starWrapperCss = css`
   }
 `
 export default function AddRating(props) {
-  const { thumbsUp, thumbsDown } = props
+  const { thumbsUp, thumbsDown, id } = props
   const [rating, setRating] = useState(0)
   const [canVote, setCanVote] = useState(true)
 

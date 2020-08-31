@@ -3,7 +3,7 @@ import { css } from '@emotion/core'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import axios from 'axios'
 
-import { faThumbsDown } from '@fortawesome/free-solid-svg-icons'
+// import { faThumbsDown } from '@fortawesome/free-solid-svg-icons'
 import CardRating from './cardRating'
 import CardImage from './cardImage'
 import CardBottomButton from './cardBottomButton'

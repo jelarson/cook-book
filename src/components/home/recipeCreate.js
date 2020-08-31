@@ -1,3 +1,5 @@
+/* eslint-disable no-console */
+/* eslint-disable no-alert */
 import React from 'react'
 import { css } from '@emotion/core'
 import axios from 'axios'
