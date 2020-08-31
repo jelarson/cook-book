@@ -33,32 +33,110 @@ const starWrapperCss = css`
 export default function AddRating(props) {
   const { thumbsUp, thumbsDown } = props
   const [rating, setRating] = useState(0)
+  const [canVote, setCanVote] = useState(true)
 
   const someFunc = (star, halfPoint) => {
+    // if (canVote) {
     if (rating === halfPoint) return 'half'
     return rating >= star ? 'filled' : 'empty'
+    // }
   }
+
+  function handleVote() {
+    setCanVote(false)
+  }
+
   return (
     <div css={ratingWrapperCss}>
       <div star-type={someFunc(1, 0.5)} css={starWrapperCss}>
-        <span onMouseOver={() => setRating(0.5)} />
-        <span onMouseOver={() => setRating(1)} />
+        <span
+          onMouseOver={() => {
+            if (canVote) {
+              setRating(0.5)
+            }
+          }}
+          onClick={() => handleVote()}
+        />
+        <span
+          onMouseOver={() => {
+            if (canVote) {
+              setRating(1)
+            }
+          }}
+          onClick={() => handleVote()}
+        />
       </div>
       <div star-type={someFunc(2, 1.5)} css={starWrapperCss}>
-        <span onMouseOver={() => setRating(1.5)} />
-        <span onMouseOver={() => setRating(2)} />
+        <span
+          onMouseOver={() => {
+            if (canVote) {
+              setRating(1.5)
+            }
+          }}
+          onClick={() => handleVote()}
+        />
+        <span
+          onMouseOver={() => {
+            if (canVote) {
+              setRating(2)
+            }
+          }}
+          onClick={() => handleVote()}
+        />
       </div>
       <div star-type={someFunc(3, 2.5)} css={starWrapperCss}>
-        <span onMouseOver={() => setRating(2.5)} />
-        <span onMouseOver={() => setRating(3)} />
+        <span
+          onMouseOver={() => {
+            if (canVote) {
+              setRating(2.5)
+            }
+          }}
+          onClick={() => handleVote()}
+        />
+        <span
+          onMouseOver={() => {
+            if (canVote) {
+              setRating(3)
+            }
+          }}
+          onClick={() => handleVote()}
+        />
       </div>
       <div star-type={someFunc(4, 3.5)} css={starWrapperCss}>
-        <span onMouseOver={() => setRating(3.5)} />
-        <span onMouseOver={() => setRating(4)} />
+        <span
+          onMouseOver={() => {
+            if (canVote) {
+              setRating(3.5)
+            }
+          }}
+          onClick={() => handleVote()}
+        />
+        <span
+          onMouseOver={() => {
+            if (canVote) {
+              setRating(4)
+            }
+          }}
+          onClick={() => handleVote()}
+        />
       </div>
       <div star-type={someFunc(5, 4.5)} css={starWrapperCss}>
-        <span onMouseOver={() => setRating(4.5)} />
-        <span onMouseOver={() => setRating(5)} />
+        <span
+          onMouseOver={() => {
+            if (canVote) {
+              setRating(4.5)
+            }
+          }}
+          onClick={() => handleVote()}
+        />
+        <span
+          onMouseOver={() => {
+            if (canVote) {
+              setRating(5)
+            }
+          }}
+          onClick={() => handleVote()}
+        />
       </div>
     </div>
   )
