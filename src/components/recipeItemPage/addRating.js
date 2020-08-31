@@ -30,7 +30,8 @@ const starWrapperCss = css`
     position: absolute;
   }
 `
-export default function Footer() {
+export default function AddRating(props) {
+  const { thumbsUp, thumbsDown } = props
   const [rating, setRating] = useState(0)
 
   const someFunc = (star, halfPoint) => {

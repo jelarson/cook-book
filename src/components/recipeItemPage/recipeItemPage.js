@@ -54,20 +54,6 @@ export default function RecipeItemPage(props) {
   const { location } = props
   const { name, category, image, id, ingredients, instructions, thumbsUp, thumbsDown, favorite } = location.state
 
-  function displayIngredients() {
-    console.log(ingredients.split(', '))
-    return ingredients.split(', ').map((ingredient) => {
-      return <li>{ingredient}</li>
-    })
-  }
-
-  function displayInstructions() {
-    console.log(instructions.split(', '))
-    return instructions.split(', ').map((instruction) => {
-      return <div>{instruction}</div>
-    })
-  }
-
   return (
     <div>
       <Navbar />
@@ -95,7 +81,7 @@ export default function RecipeItemPage(props) {
       </div>
       <div>
         {/* {id} */}
-        <AddRating />
+        <AddRating thumbsUp={thumbsUp} thumbsDown={thumbsDown} />
         {/* {thumbsUp} */}
         {/* {thumbsDown} */}
         <Favorite favorite={favorite} />
