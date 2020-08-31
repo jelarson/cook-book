@@ -84,7 +84,17 @@ export default function RecipeItemPage(props) {
         <AddRating thumbsUp={thumbsUp} thumbsDown={thumbsDown} id={id} />
         {/* {thumbsUp} */}
         {/* {thumbsDown} */}
-        <Favorite favorite={favorite} />
+        <Favorite
+          name={name}
+          category={category}
+          id={id}
+          image={image}
+          ingredients={ingredients}
+          instructions={instructions}
+          thumbsUp={thumbsUp}
+          thumbsDown={thumbsDown}
+          favorite={favorite}
+        />
         {/* {favorite} */}
       </div>
       <Footer />

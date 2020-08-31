@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { css } from '@emotion/core'
+import axios from 'axios'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 const heartIconCss = css`
@@ -11,7 +12,7 @@ const heartIconCss = css`
 export default function Favorite(props) {
   const [boolFavortie, setBoolFavorite] = useState(false)
   const [favAttribute, setFavAttribute] = useState('false')
-  const { favorite } = props
+  const { name, category, id, image, ingredients, instructions, thumbsUp, thumbsDown, favorite } = props
 
   useEffect(() => {
     if (favorite === 'false') {
@@ -33,8 +34,28 @@ export default function Favorite(props) {
   function flipFavorite() {
     if (boolFavortie) {
       setBoolFavorite(false)
+      axios.patch(`https://jel-family-cookbook-db.herokuapp.com/recipe/${id}`, {
+        name,
+        category,
+        recipeImage: image,
+        ingredients,
+        instructions,
+        thumbsUp,
+        thumbsDown,
+        favorite: 'false',
+      })
     } else {
       setBoolFavorite(true)
+      axios.patch(`https://jel-family-cookbook-db.herokuapp.com/recipe/${id}`, {
+        name,
+        category,
+        recipeImage: image,
+        ingredients,
+        instructions,
+        thumbsUp,
+        thumbsDown,
+        favorite: 'true',
+      })
     }
   }
 
