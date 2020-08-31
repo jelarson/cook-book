@@ -48,6 +48,10 @@ export default function AddRating(props) {
     setCanVote(false)
   }
 
+  function handleVoteChange() {
+    setCanVote(true)
+  }
+
   return (
     <div css={ratingWrapperCss}>
       <div star-type={someFunc(1, 0.5)} css={starWrapperCss}>
@@ -140,6 +144,14 @@ export default function AddRating(props) {
           onClick={() => handleVote()}
         />
       </div>
+      {!canVote && (
+        <div>
+          <div>You've rated this recipe a {rating} out of 5</div>
+          <button type="button" onClick={() => handleVoteChange()}>
+            Change rating?
+          </button>
+        </div>
+      )}
     </div>
   )
 }
