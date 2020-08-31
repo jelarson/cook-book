@@ -5,7 +5,6 @@ import Navbar from '../navbar/navbar'
 import Footer from '../footer/footer'
 import AddRating from './addRating'
 import Favorite from './favorite'
-import Practive from './practive'
 
 const recipeItemPageWrapperCss = css`
   display: flex;
@@ -88,14 +87,15 @@ export default function RecipeItemPage(props) {
                 return <li>{ingredient}</li>
               })}
             </ul>
-            {displayInstructions()}
+            {instructions.split(', ').map((instruction) => {
+              return <div>{instruction}</div>
+            })}
           </div>
         </div>
       </div>
       <div>
         {/* {id} */}
-        {/* <AddRating thumbsUp={thumbsUp} thumbsDown={thumbsDown} id={id} /> */}
-        <Practive />
+        <AddRating />
         {/* {thumbsUp} */}
         {/* {thumbsDown} */}
         <Favorite favorite={favorite} />
