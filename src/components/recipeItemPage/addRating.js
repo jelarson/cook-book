@@ -3,6 +3,7 @@
 /* eslint-disable jsx-a11y/mouse-events-have-key-events */
 import React, { useState } from 'react'
 import { css } from '@emotion/core'
+import axios from 'axios'
 
 const ratingWrapperCss = css`
   display: flex;
@@ -44,6 +45,10 @@ export default function AddRating(props) {
 
   function handleVote() {
     setCanVote(false)
+    axios.patch(`https://jel-family-cookbook-db.herokuapp.com/recipe/updaterating/${id}`, {
+      thumbsUp: String(Number(thumbsUp) + rating),
+      thumbsDown: String(Number(thumbsDown) + 1),
+    })
   }
 
   function handleVoteChange() {
