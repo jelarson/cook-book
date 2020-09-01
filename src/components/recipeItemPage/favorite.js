@@ -12,7 +12,7 @@ const heartIconCss = css`
 export default function Favorite(props) {
   const [boolFavortie, setBoolFavorite] = useState(false)
   const [favAttribute, setFavAttribute] = useState('false')
-  const { name, category, id, image, ingredients, instructions, thumbsUp, thumbsDown, favorite } = props
+  const { id, favorite } = props
 
   useEffect(() => {
     if (favorite === 'false') {
@@ -34,26 +34,12 @@ export default function Favorite(props) {
   function flipFavorite() {
     if (boolFavortie) {
       setBoolFavorite(false)
-      axios.patch(`https://jel-family-cookbook-db.herokuapp.com/recipe/${id}`, {
-        name,
-        category,
-        recipeImage: image,
-        ingredients,
-        instructions,
-        thumbsUp,
-        thumbsDown,
+      axios.patch(`https://jel-family-cookbook-db.herokuapp.com/recipe/updatefav/${id}`, {
         favorite: 'false',
       })
     } else {
       setBoolFavorite(true)
-      axios.patch(`https://jel-family-cookbook-db.herokuapp.com/recipe/${id}`, {
-        name,
-        category,
-        recipeImage: image,
-        ingredients,
-        instructions,
-        thumbsUp,
-        thumbsDown,
+      axios.patch(`https://jel-family-cookbook-db.herokuapp.com/recipe/updatefav/${id}`, {
         favorite: 'true',
       })
     }
