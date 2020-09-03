@@ -53,6 +53,10 @@ export default function AddRating(props) {
 
   function handleVoteChange() {
     setCanVote(true)
+    axios.patch(`https://jel-family-cookbook-db.herokuapp.com/recipe/updaterating/${id}`, {
+      thumbsUp: String(Number(thumbsUp) - rating),
+      thumbsDown: String(Number(thumbsDown) - 1),
+    })
   }
 
   return (
