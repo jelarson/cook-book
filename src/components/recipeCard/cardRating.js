@@ -16,7 +16,7 @@ export default function CardRating(props) {
 
   function calcRating(up, down) {
     if (down > 0) {
-      return up / down
+      return Math.round((up / down) * 100) / 100
     }
     return 'No Rating Yet'
   }
