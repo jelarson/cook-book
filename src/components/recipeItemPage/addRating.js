@@ -161,3 +161,6 @@ export default function AddRating(props) {
 
 // localStorage.setItem('key', 'value')
 // localStorage.getItem('key')
+
+// localStorage.setItem('voted', JSON.stringify({id: '19', score: '2'}))
+// JSON.parse(localStorage.getItem('voted'))

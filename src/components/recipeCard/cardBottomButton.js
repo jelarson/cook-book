@@ -30,7 +30,8 @@ const cardButtonLinkCss = css`
 `
 
 export default function CardBottomButton(props) {
-  const { name, category, image, id, ingredients, instructions, thumbsUp, thumbsDown, favorite } = props
+  const { name, category, image, id, ingredients, instructions } = props
+  // const { name, category, image, id, ingredients, instructions, thumbsUp, thumbsDown, favorite } = props
 
   return (
     <div css={cardButtonWrapperCss}>

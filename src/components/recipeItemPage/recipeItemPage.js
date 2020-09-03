@@ -1,6 +1,7 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { css } from '@emotion/core'
 
+import axios from 'axios'
 import Navbar from '../navbar/navbar'
 import Footer from '../footer/footer'
 import AddRating from './addRating'
@@ -52,7 +53,23 @@ const recipeContentWrapperCss = css`
 
 export default function RecipeItemPage(props) {
   const { location } = props
-  const { name, category, image, id, ingredients, instructions, thumbsUp, thumbsDown, favorite } = location.state
+  const { name, category, image, id, ingredients, instructions } = location.state
+  const [totalVotes, setTotalVotes] = useState()
+  const [totalVotesSum, setTotalVotesSum] = useState()
+  const [favorite, setFavorite] = useState('false')
+  // const { name, category, image, id, ingredients, instructions, thumbsUp, thumbsDown, favorite } = location.state
+  useEffect(() => {
+    axios
+      .get(`https://jel-family-cookbook-db.herokuapp.com/recipe/${id}`)
+      .then((response) => {
+        setTotalVotes(response.data.thumbsDown)
+        setTotalVotesSum(response.data.thumbsUp)
+        setFavorite(response.data.favorite)
+      })
+      .catch((error) => {
+        console.log('get response error', error)
+      })
+  }, [id])
 
   return (
     <div>
@@ -80,7 +97,7 @@ export default function RecipeItemPage(props) {
         </div>
       </div>
       <div>
-        <AddRating thumbsUp={thumbsUp} thumbsDown={thumbsDown} id={id} />
+        <AddRating thumbsUp={totalVotesSum} thumbsDown={totalVotes} id={id} />
         <Favorite id={id} favorite={favorite} />
       </div>
       <Footer />
