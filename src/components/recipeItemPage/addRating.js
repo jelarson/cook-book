@@ -4,6 +4,7 @@
 import React, { useState } from 'react'
 import { css } from '@emotion/core'
 import axios from 'axios'
+import CardRating from '../recipeCard/cardRating'
 
 const ratingWrapperCss = css`
   display: flex;
@@ -37,6 +38,8 @@ export default function AddRating(props) {
   const { thumbsUp, thumbsDown, id } = props
   const [rating, setRating] = useState(0)
   const [canVote, setCanVote] = useState(true)
+  const [voteTotal, setVoteTotal] = useState(thumbsDown)
+  const [voteSumTotal, setVoteSumTotal] = useState(thumbsUp)
 
   const typeDecider = (star, halfPoint) => {
     if (rating === halfPoint) return 'half'
@@ -45,18 +48,28 @@ export default function AddRating(props) {
 
   function handleVote() {
     setCanVote(false)
-    axios.patch(`https://jel-family-cookbook-db.herokuapp.com/recipe/updaterating/${id}`, {
-      thumbsUp: String(Number(thumbsUp) + rating),
-      thumbsDown: String(Number(thumbsDown) + 1),
-    })
+    axios
+      .patch(`https://jel-family-cookbook-db.herokuapp.com/recipe/updaterating/${id}`, {
+        thumbsUp: String(Number(thumbsUp) + rating),
+        thumbsDown: String(Number(thumbsDown) + 1),
+      })
+      .then(() => {
+        setVoteSumTotal(String(Number(thumbsUp) + rating))
+        setVoteTotal(String(Number(thumbsDown) + 1))
+      })
   }
 
   function handleVoteChange() {
     setCanVote(true)
-    axios.patch(`https://jel-family-cookbook-db.herokuapp.com/recipe/updaterating/${id}`, {
-      thumbsUp: String(Number(thumbsUp) - rating),
-      thumbsDown: String(Number(thumbsDown) - 1),
-    })
+    axios
+      .patch(`https://jel-family-cookbook-db.herokuapp.com/recipe/updaterating/${id}`, {
+        thumbsUp: String(Number(thumbsUp) - rating),
+        thumbsDown: String(Number(thumbsDown) - 1),
+      })
+      .then(() => {
+        setVoteSumTotal(String(Number(thumbsUp) - rating))
+        setVoteTotal(String(Number(thumbsDown) - 1))
+      })
   }
 
   return (
@@ -153,10 +166,20 @@ export default function AddRating(props) {
       </div>
       {!canVote && (
         <div>
-          <div>You&apos;ve rated this recipe a {rating} out of 5</div>
+          <div>You&apos;ve rated this recipe a {rating} out of 5____</div>
           <button type="button" onClick={() => handleVoteChange()}>
             Change rating?
           </button>
+        </div>
+      )}
+      {!voteTotal && (
+        <div>
+          <CardRating thumbsUp={thumbsUp} thumbsDown={thumbsDown} />
+        </div>
+      )}
+      {voteTotal && (
+        <div>
+          <CardRating thumbsUp={voteSumTotal} thumbsDown={voteTotal} />
         </div>
       )}
     </div>
