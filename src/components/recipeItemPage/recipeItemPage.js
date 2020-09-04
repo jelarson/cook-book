@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 import React, { useEffect, useState } from 'react'
 import { css } from '@emotion/core'
 
@@ -70,6 +71,8 @@ export default function RecipeItemPage(props) {
         console.log('get response error', error)
       })
   }, [id])
+
+  // data asynchronous - setting totalVotes and totalVotesSum before axios call is completed.
 
   return (
     <div>

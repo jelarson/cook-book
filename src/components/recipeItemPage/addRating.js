@@ -50,12 +50,12 @@ export default function AddRating(props) {
     setCanVote(false)
     axios
       .patch(`https://jel-family-cookbook-db.herokuapp.com/recipe/updaterating/${id}`, {
-        thumbsUp: String(Number(thumbsUp) + rating),
-        thumbsDown: String(Number(thumbsDown) + 1),
+        thumbsUp: String(Number(voteSumTotal) + rating),
+        thumbsDown: String(Number(voteTotal) + 1),
       })
       .then(() => {
-        setVoteSumTotal(String(Number(thumbsUp) + rating))
-        setVoteTotal(String(Number(thumbsDown) + 1))
+        setVoteSumTotal(String(Number(voteSumTotal) + rating))
+        setVoteTotal(String(Number(voteTotal) + 1))
       })
   }
 
@@ -63,12 +63,12 @@ export default function AddRating(props) {
     setCanVote(true)
     axios
       .patch(`https://jel-family-cookbook-db.herokuapp.com/recipe/updaterating/${id}`, {
-        thumbsUp: String(Number(thumbsUp) - rating),
-        thumbsDown: String(Number(thumbsDown) - 1),
+        thumbsUp: String(Number(voteSumTotal) - rating),
+        thumbsDown: String(Number(voteTotal) - 1),
       })
       .then(() => {
-        setVoteSumTotal(String(Number(thumbsUp) - rating))
-        setVoteTotal(String(Number(thumbsDown) - 1))
+        setVoteSumTotal(String(Number(voteSumTotal) - rating))
+        setVoteTotal(String(Number(voteTotal) - 1))
       })
   }
 
