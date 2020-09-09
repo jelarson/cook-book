@@ -1,5 +1,6 @@
 import React from 'react'
 import { css } from '@emotion/core'
+import NewComment from './newComment'
 
 const commentsWrapperCss = css`
   display: flex;
@@ -26,6 +27,7 @@ export default function RecipeComments() {
         <div>Title Placeholder</div>
         <div>content placeholder</div>
       </div>
+      <NewComment />
     </div>
   )
 }
