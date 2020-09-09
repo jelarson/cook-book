@@ -7,6 +7,7 @@ import Navbar from '../navbar/navbar'
 import Footer from '../footer/footer'
 import AddRating from './addRating'
 import Favorite from './favorite'
+import RecipeComments from './recipeComments'
 
 const recipeItemPageWrapperCss = css`
   display: flex;
@@ -103,6 +104,7 @@ export default function RecipeItemPage(props) {
         <AddRating thumbsUp={totalVotesSum} thumbsDown={totalVotes} id={id} />
         <Favorite id={id} favorite={favorite} />
       </div>
+      <RecipeComments />
       <Footer />
     </div>
   )
