@@ -104,7 +104,7 @@ export default function RecipeItemPage(props) {
         <AddRating thumbsUp={totalVotesSum} thumbsDown={totalVotes} id={id} />
         <Favorite id={id} favorite={myFavorite} />
       </div>
-      <RecipeComments />
+      <RecipeComments id={id} />
       <Footer />
     </div>
   )

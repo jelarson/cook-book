@@ -1,5 +1,6 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import { css } from '@emotion/core'
+import axios from 'axios'
 import NewComment from './newComment'
 
 const commentsWrapperCss = css`
@@ -19,7 +20,21 @@ const commentBoxWrapperCss = css`
   background-color: grey;
 `
 
-export default function RecipeComments() {
+export default function RecipeComments(props) {
+  const { id } = props
+  const [Comments, setAllComments] = useState([])
+  const myArr = []
+
+  useEffect(() => {
+    axios.get(`https://jel-family-cookbook-db.herokuapp.com/comments`).then((response) => {
+      response.data.forEach((comment) => {
+        if (Number(comment.recipeID) === Number(id)) {
+          myArr.push({ name: comment.name, comment: comment.recipeComment })
+        }
+      })
+    })
+  }, [id])
+
   return (
     <div css={commentsWrapperCss}>
       <div>Recipe Comments</div>
