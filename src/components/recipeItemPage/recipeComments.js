@@ -24,7 +24,7 @@ export default function RecipeComments() {
     <div css={commentsWrapperCss}>
       <div>Recipe Comments</div>
       <div css={commentBoxWrapperCss}>
-        <div>Title Placeholder</div>
+        <div>Name PH</div>
         <div>content placeholder</div>
       </div>
       <NewComment />

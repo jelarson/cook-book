@@ -55,18 +55,18 @@ const recipeContentWrapperCss = css`
 
 export default function RecipeItemPage(props) {
   const { location } = props
-  const { name, category, image, id, ingredients, instructions } = location.state
-  const [totalVotes, setTotalVotes] = useState()
-  const [totalVotesSum, setTotalVotesSum] = useState()
-  const [favorite, setFavorite] = useState('false')
-  // const { name, category, image, id, ingredients, instructions, thumbsUp, thumbsDown, favorite } = location.state
+  // const { name, category, image, id, ingredients, instructions } = location.state
+  const { name, category, image, id, ingredients, instructions, thumbsUp, thumbsDown, favorite } = location.state
+  const [totalVotes, setTotalVotes] = useState(thumbsDown)
+  const [totalVotesSum, setTotalVotesSum] = useState(thumbsUp)
+  const [myFavorite, setMyFavorite] = useState(favorite)
   useEffect(() => {
     axios
       .get(`https://jel-family-cookbook-db.herokuapp.com/recipe/${id}`)
       .then((response) => {
         setTotalVotes(response.data.thumbsDown)
         setTotalVotesSum(response.data.thumbsUp)
-        setFavorite(response.data.favorite)
+        setMyFavorite(response.data.favorite)
       })
       .catch((error) => {
         console.log('get response error', error)
@@ -102,7 +102,7 @@ export default function RecipeItemPage(props) {
       </div>
       <div>
         <AddRating thumbsUp={totalVotesSum} thumbsDown={totalVotes} id={id} />
-        <Favorite id={id} favorite={favorite} />
+        <Favorite id={id} favorite={myFavorite} />
       </div>
       <RecipeComments />
       <Footer />

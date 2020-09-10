@@ -19,7 +19,7 @@ export default function NewComment() {
       </div>
       <div>
         <div>comment:</div>
-        <input type="text" />
+        <textarea />
       </div>
       <button type="button">Submit</button>
     </div>

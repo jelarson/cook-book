@@ -30,8 +30,8 @@ const cardButtonLinkCss = css`
 `
 
 export default function CardBottomButton(props) {
-  const { name, category, image, id, ingredients, instructions } = props
-  // const { name, category, image, id, ingredients, instructions, thumbsUp, thumbsDown, favorite } = props
+  // const { name, category, image, id, ingredients, instructions } = props
+  const { name, category, image, id, ingredients, instructions, thumbsUp, thumbsDown, favorite } = props
 
   return (
     <div css={cardButtonWrapperCss}>
@@ -39,8 +39,8 @@ export default function CardBottomButton(props) {
         css={cardButtonLinkCss}
         to={{
           pathname: 'viewrecipe',
-          state: { name, category, image, id, ingredients, instructions },
-          // state: { name, category, image, id, ingredients, instructions, thumbsUp, thumbsDown, favorite },
+          // state: { name, category, image, id, ingredients, instructions },
+          state: { name, category, image, id, ingredients, instructions, thumbsUp, thumbsDown, favorite },
         }}
       >
         View Recipe
