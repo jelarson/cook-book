@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useCallback, useMemo } from 'react'
 import { css } from '@emotion/core'
 import axios from 'axios'
 import NewComment from './newComment'
@@ -22,23 +22,58 @@ const commentBoxWrapperCss = css`
 
 export default function RecipeComments(props) {
   const { id } = props
-  const [Comments, setAllComments] = useState([])
+  // const [mathcingComments, setMatchingComments] = useState([])
   const myArr = []
+  // const [currentComment, setCurrentComment] = useState()
+  // const [testArr, setTestArr] = useState([])
 
-  useEffect(() => {
+  const generateArr = useMemo(() => {
     axios.get(`https://jel-family-cookbook-db.herokuapp.com/comments`).then((response) => {
       response.data.forEach((comment) => {
         if (Number(comment.recipeID) === Number(id)) {
           myArr.push({ name: comment.name, comment: comment.recipeComment })
+          // setCurrentComment({ name: comment.name, comment: comment.recipeComment })
         }
       })
     })
-  }, [id])
+  }, [id, myArr])
+
+  useEffect(() => {
+    generateArr()
+  }, [generateArr])
+
+  // useEffect(() => {
+  // axios.get(`https://jel-family-cookbook-db.herokuapp.com/comments`).then((response) => {
+  //   response.data.forEach((comment) => {
+  //     if (Number(comment.recipeID) === Number(id)) {
+  //       myArr.push({ name: comment.name, comment: comment.recipeComment })
+  //     }
+  //   })
+  //   })
+  // }, [id, myArr])
+
+  // useEffect(() => {
+  //   setMatchingComments([...myArr])
+  //   console.log('myArr', myArr)
+  // }, [myArr])
+
+  // useEffect(() => {
+  //   axios.get(`https://jel-family-cookbook-db.herokuapp.com/comments`).then((response) => {
+  //     response.data.forEach((comment) => {
+  //       if (Number(comment.recipeID) === Number(id)) {
+  //         myArr.push({ name: comment.name, comment: comment.recipeComment })
+  //       }
+  //     })
+  //   })
+  // }, [id])
 
   return (
     <div css={commentsWrapperCss}>
       <div>Recipe Comments</div>
       <div css={commentBoxWrapperCss}>
+        {myArr.map((comment) => {
+          return <li>{`${comment.name} - ${comment.comment}`}</li>
+        })}
         <div>Name PH</div>
         <div>content placeholder</div>
       </div>
