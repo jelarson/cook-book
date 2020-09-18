@@ -23,6 +23,7 @@ const commentBoxWrapperCss = css`
 export default function RecipeComments(props) {
   const { id } = props
   const [mathcingComments, setMatchingComments] = useState([])
+  const [render, setRender] = useState(true)
 
   const generateArr = useCallback(() => {
     axios.get(`https://jel-family-cookbook-db.herokuapp.com/comments`).then((response) => {
@@ -54,7 +55,7 @@ export default function RecipeComments(props) {
         <div>Name PH</div>
         <div>content placeholder</div>
       </div>
-      <NewComment />
+      <NewComment id={id} setRender={setRender} render={render} />
     </div>
   )
 }
